@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {FaBars, FaTimes} from "react-icons/fa";
+// import {Link} from 'react-scroll'
 
 const Navbar = () => {
 
@@ -8,23 +9,23 @@ const Navbar = () => {
     const links = [
         {
             id: 1,
-            link: 'Home'
+            link: 'Home',
         },
         {
             id: 2,
-            link: 'About'
+            link: 'About',
         },
+        // {
+        //     id: 3,
+        //     link: 'Portfolio'
+        // },
         {
             id: 3,
-            link: 'Portfolio'
+            link: 'Experience',
         },
         {
             id: 4,
-            link: 'Experience'
-        },
-        {
-            id: 5,
-            link: 'Contact'
+            link: 'Contact',
         },
     ]
 
