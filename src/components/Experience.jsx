@@ -8,6 +8,9 @@ import react from '../assets/react.png';
 import aws from '../assets/aws.png';
 import java from '../assets/java.png';
 import git from '../assets/git.png';
+import spring from '../assets/spring.png';
+import junit from '../assets/junit.png';
+import node from '../assets/node.png';
 
 
 
@@ -67,6 +70,24 @@ const Experience = () => {
             src: js,
             title: 'JavaScript',
             style: 'shadow-yellow-500'
+        },
+        {
+            id:10,
+            src: spring,
+            title: 'Spring-boot',
+            style: 'shadow-green-500'
+        },
+        {
+            id:11,
+            src: junit,
+            title: 'JUnit testing',
+            style: 'shadow-red-500'
+        },
+        {
+            id:12,
+            src: node,
+            title: 'Node.js',
+            style: 'shadow-green-500'
         },
     ]
 
