@@ -4,6 +4,7 @@ import connect4 from "../assets/portfolio/connect4.png"
 import password_generator from "../assets/portfolio/password_generator.png"
 import snake from "../assets/portfolio/snake.png"
 import myportfolio from "../assets/portfolio/portfolio.png"
+import hangman from "../assets/portfolio/hangman.png"
 
 const Portfolio = () => {
 
@@ -32,6 +33,11 @@ const Portfolio = () => {
             id:5,
             src: myportfolio,
             href: 'https://agogte.github.io/portfolio/'
+        },
+        {
+            id:6,
+            src: hangman,
+            href: 'https://agogte.github.io/hangman/'
         }
     ]
 
