@@ -2,15 +2,16 @@ import React from 'react'
 import python from '../assets/python.png';
 import bash from '../assets/bash.png';
 import docker from '../assets/docker.png';
-import linux from '../assets/linux.png';
+// import linux from '../assets/linux.png';
 import js from '../assets/js.png';
 import react from '../assets/react.png';
 import aws from '../assets/aws.png';
-import java from '../assets/java.png';
+import postgresql from '../assets/postgresql.png';
 import git from '../assets/git.png';
 import spring from '../assets/spring.png';
-import junit from '../assets/junit.png';
 import node from '../assets/node.png';
+import express from '../assets/express.png'
+import mongodb from '../assets/mongodb.png'
 
 
 
@@ -19,75 +20,75 @@ const Experience = () => {
     const tech = [
         {
             id:1,
-            src: bash,
-            title: 'Bash',
-            style: 'shadow-white'
+            src: react,
+            title: 'React.js',
+            style: 'shadow-blue-600'
         },
         {
             id:2,
-            src: python,
-            title: 'Python',
-            style: 'shadow-blue-300'
+            src: node,
+            title: 'Node.js',
+            style: 'shadow-green-500'
         },
         {
             id:3,
-            src: java,
-            title: 'Java',
+            src: express,
+            title: 'Express.js',
             style: 'shadow-white'
         },
         {
             id:4,
-            src: aws,
-            title: 'Amazon Web Services',
-            style: 'shadow-yellow-500'
-        },
-        {
-            id:5,
-            src: react,
-            title: 'React',
-            style: 'shadow-blue-600'
-        },
-        {
-            id:6,
-            src: docker,
-            title: 'Docker',
-            style: 'shadow-blue-400'
-        },
-        {
-            id:7,
             src: git,
             title: 'Git',
             style: 'shadow-orange-500'
         },
         {
+            id:5,
+            src: spring,
+            title: 'Java Spring-boot',
+            style: 'shadow-green-500'
+        },
+        {
+            id:6,
+            src: aws,
+            title: 'Amazon Web Services',
+            style: 'shadow-yellow-500'
+        },
+        {
+            id:7,
+            src: mongodb,
+            title: 'MongoDB',
+            style: 'shadow-green-500'
+        },
+        {
             id:8,
-            src: linux,
-            title: 'Linux',
+            src: bash,
+            title: 'Bash',
             style: 'shadow-white'
         },
         {
             id:9,
-            src: js,
-            title: 'JavaScript',
-            style: 'shadow-yellow-500'
+            src: postgresql,
+            title: 'PostgreSQL',
+            style: 'shadow-blue-500'
         },
         {
             id:10,
-            src: spring,
-            title: 'Spring-boot',
-            style: 'shadow-green-500'
+            src: docker,
+            title: 'Docker',
+            style: 'shadow-blue-400'
         },
         {
             id:11,
-            src: junit,
-            title: 'JUnit testing',
-            style: 'shadow-red-500'
+            src: python,
+            title: 'Python',
+            style: 'shadow-blue-300'
         },
         {
             id:12,
-            src: node,
-            title: 'Node.js',
-            style: 'shadow-green-500'
+            src: js,
+            title: 'JavaScript',
+            style: 'shadow-yellow-500'
         },
     ]
 
