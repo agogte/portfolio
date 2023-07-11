@@ -7,11 +7,11 @@ const Home = () => {
     <div name="Home" className='h-screen w-full bg-gradient-to-b from-black via-black to-gray-800'>
         <div className='max-w-screen-lg mx-auto flex flex-col  md:flex-row items-center px-4 justify-center h-full'>
             <div className='flex flex-col justify-center h-full'>
-                <h2 className='text-4xl sm:text-7xl font-bold text-white'>
-                    Hello!
+                <h2 className='text-3xl sm:text-6xl font-bold text-white'>
+                    I'm a Full Stack Developer!
                 </h2>
-                <p className='py-4 text-gray-500'>
-                    I'm a soon to be college grad looking for an entry level job as a Software/DevOps Engineer 👨🏻‍💻. I currently work as a Graduate Teaching Assistant at Computer Science department at George Mason University. I love travelling and spend most of my time in the great outdoors. 🧗🏻
+                <p className='py-4 text-gray-300 text-lg'>
+                I am proficient in building scalable applications using <b>React.js, Express.js, Node.js, Java SpringBoot, JavaScript, MongoDB, and PostgreSQL</b>. I support my development process with <b>Git, Docker, BASH and Python scripts, and Linux automations</b>. I love social dancing 🕺🏻, travelling 🛫 and spend most of my time in the great outdoors. 🧗🏻
                 </p>
                 <div>
                     {/* <button className='group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer'>
@@ -20,7 +20,7 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <img src={HeroImage} alt="pp" className='mx-auto md:w-2/3 w-2/3 rounded-2xl' />
+                <img src={HeroImage} alt="displaypicture" className='mx-auto md:w-2/3 w-2/3 rounded-2xl' />
             </div>
         </div>
     </div>
