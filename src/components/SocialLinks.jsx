@@ -43,7 +43,7 @@ const SocialLinks = () => {
             ),
             href: 'https://agogte.github.io/error/',
             style: 'rounded-br-md',
-            download: true,
+            // download: true,
         }
     ]
 
