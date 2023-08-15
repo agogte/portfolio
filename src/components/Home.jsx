@@ -4,7 +4,7 @@ import HeroImage from '../assets/IMG_8031.jpeg';
 
 const Home = () => {
   return (
-    <div name="Home" className='h-screen w-full bg-gradient-to-b from-black via-black to-gray-800'>
+    <div name="Home" className='h-auto w-full bg-gradient-to-b from-black via-black to-gray-800 py-10 md:py-24'>
         <div className='max-w-screen-lg mx-auto flex flex-col  md:flex-row items-center px-4 justify-center h-full'>
             <div className='flex flex-col justify-center h-full'>
                 <h2 className='text-3xl sm:text-6xl font-bold text-white'>
