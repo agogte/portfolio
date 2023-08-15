@@ -12,7 +12,8 @@ const SocialLinks = () => {
                 LinkedIn <FaLinkedin size={30} />
                 </>
             ),
-            href: 'https://www.linkedin.com/in/advait-gogte/',
+            // href: 'https://www.linkedin.com/in/advait-gogte/',
+            href: 'https://agogte.github.io/error/',
             style: 'rounded-tr-md'
         },
         {
@@ -40,7 +41,7 @@ const SocialLinks = () => {
                 Resume <BsFillPersonLinesFill size={30} />
                 </>
             ),
-            href: 'https://drive.google.com/file/d/1Q9Hzod3xP9hvbdHl-bxjvVxIOHLg4aN_/view?usp=sharing',
+            href: 'https://agogte.github.io/error/',
             style: 'rounded-br-md',
             download: true,
         }
