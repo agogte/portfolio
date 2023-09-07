@@ -36,14 +36,14 @@ const NavBar = () => {
 
       <ul className="hidden md:flex">
         {links.map(({ id, link }) => (
-          <li
+          <button
             key={id}
-            className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200 hover:bg-gray-600 hover:text-gray-300 hover:rounded-full"
+            className="px-6 cursor-pointer capitalize font-medium text-lg text-gray-500 hover:scale-105 duration-200 hover:bg-gray-600 hover:text-gray-300 focus:scale-105 focus:bg-gray-600 focus:text-gray-300 focus:ring focus:ring-gray-400 hover:rounded-full focus:rounded-full"
           >
             <Link to={link} smooth duration={500}>
               {link}
             </Link>
-          </li>
+          </button>
         ))}
       </ul>
 
