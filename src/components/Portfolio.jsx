@@ -3,52 +3,58 @@ import tictactoe from "../assets/portfolio/tictactoe.png"
 import connect4 from "../assets/portfolio/connect4.png"
 import password_generator from "../assets/portfolio/password_generator.png"
 import snake from "../assets/portfolio/snake.png"
-// import myportfolio from "../assets/portfolio/portfolio.png"
 import candycrush from "../assets/portfolio/candycrush.png"
 import hangman from "../assets/portfolio/hangman.png"
 import whowantstobeamillionair from "../assets/portfolio/whowantstobeamillionarie.png"
+import urlshortener from '../assets/portfolio/url-shortener.png'
 
 const Portfolio = () => {
 
     const portfolios = [
         {
             id:1,
+            src: urlshortener,
+            title: "Shorten IT!",
+            href: 'https://github.com/agogte/urlshortener'
+        },
+        {
+            id:2,
             src: tictactoe,
             title: "Tic Tac Toe",
             href: 'https://agogte.github.io/tic-tac-toe/'
         },
         {
-            id:2,
+            id:3,
             src: connect4,
             title: "Connect 4",
             href: 'https://agogte.github.io/connect4/'
         },
         {
-            id:3,
+            id:4,
             src: password_generator,
             title: "Password generator",
             href: 'https://agogte.github.io/passgen_JS/'
         },
         {
-            id:4,
+            id:5,
             src: snake,
             title: "Snake",
             href: 'https://agogte.github.io/snake/'
         },
         {
-            id:5,
+            id:6,
             src: hangman,
             title: "Hangman",
             href: 'https://agogte.github.io/hangman/'
         },
         {
-            id:6,
+            id:7,
             src: whowantstobeamillionair,
             title: "Who wants to be a millionaire?",
             href: 'https://agogte.github.io/whowantstobeamillionaire/'
         },
         {
-            id:7,
+            id:8,
             src: candycrush,
             title: "Candy Crush Clone",
             href: 'https://agogte.github.io/candycrushclone/'
@@ -66,7 +72,7 @@ const Portfolio = () => {
 
             
 
-            <div className='w-full grid grid-cols-2 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0'>
+            <div className='w-full grid grid-cols-2 sm:grid-cols-3 gap-12 text-center py-8 px-12 sm:px-0'>
             {
                 portfolios.map(({id, src,title, href}) => (
                     <div key='id'className='shadow-md hover:scale-110 duration-500 py-2 rounded-lg shadow-white'>
