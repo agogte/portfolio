@@ -1,6 +1,7 @@
 import React from 'react'
 import tictactoe from "../assets/portfolio/tictactoe.png"
-import connect4 from "../assets/portfolio/connect4.png"
+import newssummarizer from '../assets/portfolio/newssummaizer.png'
+import dadjokes from "../assets/portfolio/dadjokes.png"
 import password_generator from "../assets/portfolio/password_generator.png"
 import snake from "../assets/portfolio/snake.png"
 import candycrush from "../assets/portfolio/candycrush.png"
@@ -19,42 +20,48 @@ const Portfolio = () => {
         },
         {
             id:2,
+            src: newssummarizer,
+            title: "News Article Summarizer",
+            href: 'https://agogte.github.io/newssummarizer/'
+        },
+        {
+            id:3,
             src: tictactoe,
             title: "Tic Tac Toe",
             href: 'https://agogte.github.io/tic-tac-toe/'
         },
         {
-            id:3,
-            src: connect4,
-            title: "Connect 4",
-            href: 'https://agogte.github.io/connect4/'
+            id:4,
+            src: dadjokes,
+            title: "Dad Joke Generator",
+            href: 'https://agogte.github.io/dadjokes/'
         },
         {
-            id:4,
+            id:5,
             src: password_generator,
             title: "Password generator",
             href: 'https://agogte.github.io/passgen_JS/'
         },
         {
-            id:5,
+            id:6,
             src: snake,
             title: "Snake",
             href: 'https://agogte.github.io/snake/'
         },
         {
-            id:6,
+            id:7,
             src: hangman,
             title: "Hangman",
             href: 'https://agogte.github.io/hangman/'
         },
         {
-            id:7,
+            id:8,
             src: whowantstobeamillionair,
             title: "Who wants to be a millionaire?",
             href: 'https://agogte.github.io/whowantstobeamillionaire/'
         },
         {
-            id:8,
+            id:9,
             src: candycrush,
             title: "Candy Crush Clone",
             href: 'https://agogte.github.io/candycrushclone/'
