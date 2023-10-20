@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/traverse": "^7.23.2",
     "autoprefixer": "^10.4.13",
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.21",
