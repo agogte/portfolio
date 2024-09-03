@@ -70,19 +70,19 @@ const Portfolio = () => {
 
 
   return (
-    <div name="portfolio" className='w-full h-auto md:h-screen md:py-10 bg-gradient-to-b from-black to-gray-800 text-white'>
-        <div className='max-w-screen-lg mx-auto p-10 flex flex-col justify-center w-full h-full text-white'>
-            <div className='pb-8 '>
+    <div name="portfolio" className='w-full h-auto md:h-screen md:pt-10 bg-gradient-to-b from-black to-gray-800 text-white'>
+        <div className='max-w-screen-lg max-h-fit mx-auto p-10 flex flex-col justify-center w-full h-full text-white'>
+            <div className='md:pb-8'>
                 <p className='text-4xl font-bold inline border-b-4 border-gray-500'>Portfolio</p>
-                <p className='py-6'>Check out some of my work</p>
+                <p className='pt-6'>Check out some of my work</p>
             </div>
 
             
 
-            <div className='w-full grid grid-cols-2 sm:grid-cols-3 gap-12 text-center py-8 px-12 sm:px-0'>
+            <div className='w-full grid grid-cols-2 sm:grid-cols-3 gap-10 text-center px-12 sm:px-0'>
             {
                 portfolios.map(({id, src,title, href}) => (
-                    <div key='id'className='shadow-md hover:scale-110 duration-500 py-2 rounded-lg shadow-white'>
+                    <div key='id'className='shadow-md hover:scale-110 duration-500 xl:py-2 rounded-lg shadow-white'>
                         <a href={href} target='_blank' rel='noopener noreferrer'>
                         <img src={src} alt="" className='w-20 mx-auto'/>
                         <p className='text-xl py-2'>{title}</p>
