@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Portfolio from "./components/Portfolio";
 import Footer from "./components/Footer";
+import WorkExperience from "./components/WorkExperience";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Navbar />
       <Home />
       <About />
-      <Portfolio />
+      <WorkExperience/>
+      {/* <Portfolio /> */}
       <Experience />
       <Contact /> 
       <SocialLinks />
