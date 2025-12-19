@@ -3,7 +3,7 @@ export interface WorkExperienceData {
     title: String,
     company: String,
     location: String,
-    description: String,
+    highlights: String[],
     fromDate: String,
     toDate: String | null
 }
