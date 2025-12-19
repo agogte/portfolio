@@ -18,10 +18,10 @@ const NavBar = () => {
       id: 3,
       link: "WorkExperience",
     },
-    // {
-    //   id: 4,
-    //   link: "portfolio",
-    // },
+    {
+      id: 4,
+      link: "portfolio",
+    },
     {
       id: 5,
       link: "Experience",
@@ -35,7 +35,9 @@ const NavBar = () => {
   return (
     <div className="flex justify-between items-center w-full h-auto px-4 md:py-4 text-white bg-black fixed">
       <div>
-        <h1 className="text-3xl md:text-5xl font-signature ml-2 hover:scale-105 duration-500"><a href="/">Advait Gogte</a></h1>
+        <h1 className="text-3xl md:text-5xl font-signature ml-2 hover:scale-105 duration-500">
+          <a href="/">Advait Gogte</a>
+        </h1>
       </div>
 
       <ul className="hidden md:flex">

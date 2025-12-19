@@ -1,21 +1,47 @@
-import React from 'react'
+import React from "react";
 
 const About = () => {
   return (
-    <div name="About" className='w-full h-auto py-8 md:h-screen md:py-20 bg-gradient-to-b from-gray-800 to-black text-white'>
-      <div className='max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full'>
-        <div className='pb-8'>
-          <p className='text-4xl font-bold inline border-b-4 border-gray-500'> About</p>
+    <div
+      name="About"
+      className="w-full h-screen py-8 md:h-screen md:py-20 bg-gradient-to-b from-gray-800 to-black text-white"
+    >
+      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+        <div className="pb-8">
+          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
+            About
+          </p>
         </div>
-        <ul className='text-xl mt-20'>
-          👨🏻‍💻 Skilled Full Stack Developer with a proven track record in building scalable, robust systems using <b>C# .NET</b> and <b>Angular 17</b>. <br />
-          🚀 Extensive experience across the entire <b>development lifecycle</b>, consistently delivering <b>high-performance software solutions</b> that exceed expectations. <br />
-          💥 Committed to <b>pushing the boundaries</b> of what's possible in software development, ensuring every project is <b>efficient, reliable, and aligned</b> with business goals.
-        </ul>
-        <br />
+
+        <div className="text-lg leading-relaxed space-y-6 text-gray-300 mt-12">
+          <p>
+            I’m a Software Development Engineer with 3+ years of enterprise
+            experience designing, building, and operating cloud-native,
+            distributed systems. My work focuses on event-driven microservices,
+            asynchronous processing, and production-grade infrastructure that
+            scales reliably under real-world load.
+          </p>
+
+          <p>
+            I’ve owned systems end-to-end — from architecture and implementation
+            to CI/CD, deployment strategies, and on-call readiness — delivering
+            measurable impact such as 40% throughput improvements, 35% latency
+            reduction, and sustained 99.99% uptime. I primarily work with C#,
+            Java, AWS, Azure, and modern DevOps pipelines to build resilient,
+            maintainable platforms.
+          </p>
+
+          <p>
+            I care deeply about engineering quality, system reliability, and
+            long-term maintainability. I enjoy solving complex distributed
+            systems problems, mentoring engineers through thoughtful code
+            reviews, and building software that balances technical excellence
+            with business outcomes.
+          </p>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;
