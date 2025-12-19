@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f9f64b7b.css",
-    "main.js": "/portfolio/static/js/main.73be3b20.js",
+    "main.css": "/portfolio/static/css/main.17f4519f.css",
+    "main.js": "/portfolio/static/js/main.7e7caedd.js",
     "static/media/IMG_8031.jpeg": "/portfolio/static/media/IMG_8031.71027d9b1869790da778.jpeg",
     "static/media/candycrush.png": "/portfolio/static/media/candycrush.f845544823f37b3e72eb.png",
     "static/media/Angular.png": "/portfolio/static/media/Angular.df481f8cfd1dc4ad3f23.png",
@@ -11,18 +11,23 @@
     "static/media/tictactoe.png": "/portfolio/static/media/tictactoe.5d0d9c65c215604e6959.png",
     "static/media/password_generator.png": "/portfolio/static/media/password_generator.89bd9ebb131c53c0375c.png",
     "static/media/snake.png": "/portfolio/static/media/snake.7786a6c1b18dc466bb74.png",
+    "static/media/smart-api.png": "/portfolio/static/media/smart-api.7531e8d070312facc530.png",
+    "static/media/react.png": "/portfolio/static/media/react.aa2d1b58de9a7180f161.png",
     "static/media/dadjokes.png": "/portfolio/static/media/dadjokes.ef7af702901dfaa7aed5.png",
+    "static/media/java.png": "/portfolio/static/media/java.ddf8676bd569fe01ab44.png",
     "static/media/git.png": "/portfolio/static/media/git.b5723d2fd09355d535e5.png",
     "static/media/sqlserver.png.jpg": "/portfolio/static/media/sqlserver.png.dde5e2f5823ccf3e7a1f.jpg",
+    "static/media/queue.png": "/portfolio/static/media/queue.c737c11aa594ab57bb03.png",
+    "static/media/PostgresSQL.png": "/portfolio/static/media/PostgresSQL.17c2814e17fd9d441e1f.png",
     "static/media/bash.png": "/portfolio/static/media/bash.81ffb67de9206b9f2499.png",
     "static/media/newssummaizer.png": "/portfolio/static/media/newssummaizer.a5874198db67a80d13c0.png",
     "static/media/csharp.png.svg": "/portfolio/static/media/csharp.png.e2c0510d2b743a87e7621b703ba07906.svg",
     "index.html": "/portfolio/index.html",
-    "main.f9f64b7b.css.map": "/portfolio/static/css/main.f9f64b7b.css.map",
-    "main.73be3b20.js.map": "/portfolio/static/js/main.73be3b20.js.map"
+    "main.17f4519f.css.map": "/portfolio/static/css/main.17f4519f.css.map",
+    "main.7e7caedd.js.map": "/portfolio/static/js/main.7e7caedd.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9f64b7b.css",
-    "static/js/main.73be3b20.js"
+    "static/css/main.17f4519f.css",
+    "static/js/main.7e7caedd.js"
   ]
 }
