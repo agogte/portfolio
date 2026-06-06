@@ -19,25 +19,24 @@ const Home = () => {
           </p>
 
           <p className="py-4 text-gray-300 text-lg">
-            Software Development Engineer with 3+ years of enterprise experience
-            building and operating cloud-native, distributed systems at scale.
-            Specialized in event-driven microservices, asynchronous processing,
-            and CI/CD automation across AWS and Azure, using C# and Java.
+            Software Engineer with 3+ years of experience designing and
+            operating distributed systems at scale. Proven track record of
+            delivering measurable business impact through event-driven
+            architectures, high-throughput APIs, and AI-integrated backend
+            systems.
           </p>
 
           <p className="py-2 text-gray-300 text-lg">
-            Proven track record of delivering measurable impact — increasing
-            system throughput by 40%, reducing latency by 35%, and maintaining
-            99.99% uptime through resilient architecture, blue/green
-            deployments, and end-to-end system ownership. Experienced in
-            designing for reliability, scalability, and long-term
-            maintainability in production environments.
+            Deep expertise in Java, TypeScript, and cloud-native infrastructure
+            across AWS and Azure. Known for strong engineering judgment,
+            cross-functional ownership, and shipping reliable systems that serve
+            millions of users.
           </p>
 
           <p className="pt-2 text-gray-400 text-sm">
-            Recent work includes serverless microservices, async messaging
-            pipelines, SQL performance optimization, and production-grade CI/CD
-            systems.
+            Recent work spans event-driven microservices, ETL pipelines, SQL
+            performance optimization, LLM-integrated tooling, and
+            production-grade CI/CD systems.
           </p>
         </div>
         <div>

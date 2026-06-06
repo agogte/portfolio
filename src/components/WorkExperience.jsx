@@ -9,7 +9,7 @@ const WorkExperience = () => {
   return (
     <div
       name="WorkExperience"
-      className="w-full h-screen py-28 bg-gradient-to-b from-black to-gray-800 text-white"
+      className="w-full h-auto py-28 bg-gradient-to-b from-black to-gray-800 text-white"
     >
       <div className="max-w-screen-lg mx-auto px-4">
         <div className="mb-16">
@@ -44,12 +44,14 @@ const WorkExperience = () => {
                     </p>
                   </div>
 
-                  {/* Highlights
-                  <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+                  <ul className="space-y-2 text-gray-300 text-sm">
                     {element.highlights.map((point, idx) => (
-                      <li key={idx}>{point}</li>
+                      <li key={idx} className="flex gap-2">
+                        <span className="text-gray-500 mt-1 shrink-0">▸</span>
+                        <span>{point}</span>
+                      </li>
                     ))}
-                  </ul> */}
+                  </ul>
                 </div>
               </VerticalTimelineElement>
             ))}

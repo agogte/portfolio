@@ -15,28 +15,26 @@ const About = () => {
 
         <div className="text-lg leading-relaxed space-y-6 text-gray-300 mt-12">
           <p>
-            I’m a Software Development Engineer with 3+ years of enterprise
-            experience designing, building, and operating cloud-native,
-            distributed systems. My work focuses on event-driven microservices,
-            asynchronous processing, and production-grade infrastructure that
-            scales reliably under real-world load.
+            I’m a Software Engineer with 3+ years of experience designing and
+            operating distributed systems at scale. My work spans event-driven
+            microservices, high-throughput APIs, ETL/ELT pipelines, and
+            AI-integrated backend systems — built to handle real production load
+            reliably.
           </p>
 
           <p>
-            I’ve owned systems end-to-end — from architecture and implementation
-            to CI/CD, deployment strategies, and on-call readiness — delivering
-            measurable impact such as 40% throughput improvements, 35% latency
-            reduction, and sustained 99.99% uptime. I primarily work with C#,
-            Java, AWS, Azure, and modern DevOps pipelines to build resilient,
-            maintainable platforms.
+            I’ve owned systems end-to-end: architecture, implementation, CI/CD,
+            observability, and on-call readiness. That ownership has translated
+            into a 40% throughput increase, 35% latency reduction, 55% MTTR
+            improvement, and sustained 99.99% uptime across mission-critical
+            services. I work primarily in Java, TypeScript, C#, AWS, and Azure.
           </p>
 
           <p>
-            I care deeply about engineering quality, system reliability, and
-            long-term maintainability. I enjoy solving complex distributed
-            systems problems, mentoring engineers through thoughtful code
-            reviews, and building software that balances technical excellence
-            with business outcomes.
+            I care about engineering judgment, not just execution. I enjoy
+            solving hard distributed systems problems, integrating AI tooling
+            into real workflows, and building platforms that balance technical
+            excellence with clear business outcomes.
           </p>
         </div>
       </div>
