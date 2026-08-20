@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+# Builds the site and publishes it to the `gh-pages` branch, which is what
+# https://agogte.github.io/portfolio serves. Runs on every push to the default
+# branch, and can be triggered by hand from the Actions tab.
+#
+# This mirrors what ./deploy.sh does locally, so either route produces the
+# same result and no Pages settings need to change.
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+# Needed so the built-in GITHUB_TOKEN can push to gh-pages.
+permissions:
+  contents: write
+
+# If two pushes land close together, let the newer one win rather than
+# racing to publish out of order.
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        # CI=false keeps lint warnings from being promoted to errors, matching
+        # the local deploy script.
+        run: CI=false npm run build
+
+      - name: Verify build output
+        run: test -f build/index.html
+
+      - name: Publish to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Stop Pages running the output through Jekyll.
+          touch build/.nojekyll
+
+          cd build
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b gh-pages
+          git add -A
+          git commit -qm "Deploy ${GITHUB_SHA} from ${GITHUB_REF_NAME}"
+
+          # gh-pages holds build output only, so replacing it wholesale is
+          # intentional — there is no history worth preserving there.
+          git push -f \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
+
+      - name: Summary
+        run: echo "Published to https://agogte.github.io/portfolio" >> "$GITHUB_STEP_SUMMARY"
