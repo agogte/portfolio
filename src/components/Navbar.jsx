@@ -9,7 +9,8 @@ const links = [
   { id: 3, to: "showcase", label: "Showcase" },
   { id: 4, to: "portfolio", label: "Work" },
   { id: 5, to: "Experience", label: "Stack" },
-  { id: 6, to: "Contact", label: "Contact" },
+  { id: 6, to: "Certifications", label: "Certs" },
+  { id: 7, to: "Contact", label: "Contact" },
 ];
 
 const NavBar = () => {

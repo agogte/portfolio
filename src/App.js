@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import SocialLinks from "./components/SocialLinks";
 import Experience from "./components/Experience";
+import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Showcase from "./components/Showcase";
 import Portfolio from "./components/Portfolio";
@@ -21,6 +22,7 @@ function App() {
         <Showcase />
         <Portfolio />
         <Experience />
+        <Certifications />
         <Contact />
       </main>
       <SocialLinks />
