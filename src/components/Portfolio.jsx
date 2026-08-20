@@ -1,7 +1,10 @@
 import React from "react";
+import { Section, SectionHead, Reveal } from "./Signal";
+
 import utilynx from "../assets/portfolio/NPM.png";
 import smartapigateway from "../assets/portfolio/smart-api.png";
 import rabbitmqSample from "../assets/portfolio/queue.png";
+import urlshortener from "../assets/portfolio/url-shortener.png";
 
 import tictactoe from "../assets/portfolio/tictactoe.png";
 import newssummarizer from "../assets/portfolio/newssummaizer.png";
@@ -11,132 +14,130 @@ import snake from "../assets/portfolio/snake.png";
 import candycrush from "../assets/portfolio/candycrush.png";
 import hangman from "../assets/portfolio/hangman.png";
 import whowantstobeamillionair from "../assets/portfolio/whowantstobeamillionarie.png";
-import urlshortener from "../assets/portfolio/url-shortener.png";
 
-const Portfolio = () => {
-  const topProjects = [
-    {
-      id: 1,
-      src: utilynx,
-      title: "utilynx (npm)",
-      href: "https://www.npmjs.com/package/@agogte/utilynx",
-    },
-    {
-      id: 2,
-      src: smartapigateway,
-      title: "Smart API Gateway",
-      href: "https://github.com/agogte/smart-api-gateway",
-    },
-    {
-      id: 3,
-      src: rabbitmqSample,
-      title: "RabbitMQ Sample",
-      href: "https://github.com/agogte/rabbitmq-sample",
-    },
-  ];
+const featured = [
+  {
+    src: urlshortener,
+    title: "URL Shortener — Observability Lab",
+    blurb:
+      "A shortener whose real subject is production observability: Prometheus metrics, Grafana dashboards and alert thresholds worth reasoning about.",
+    stack: ["Node", "Prometheus", "Grafana"],
+    href: "https://github.com/agogte/urlshortener",
+  },
+  {
+    src: utilynx,
+    title: "utilynx",
+    blurb:
+      "A published npm package of LINQ-inspired collection and utility functions for TypeScript.",
+    stack: ["TypeScript", "npm"],
+    href: "https://www.npmjs.com/package/@agogte/utilynx",
+  },
+  {
+    src: smartapigateway,
+    title: "Smart API Gateway",
+    blurb:
+      "Gateway internals written from scratch — routing, throttling and request shaping.",
+    stack: ["Node"],
+    href: "https://github.com/agogte/Smart-Api-Gateway",
+  },
+  {
+    src: rabbitmqSample,
+    title: "RabbitMQ Sample",
+    blurb:
+      "Messaging-queue scenarios and consumer patterns — groundwork behind pipelines that survive 5× spikes.",
+    stack: ["Node", "RabbitMQ"],
+    href: "https://github.com/agogte/rabbitMq-sample",
+  },
+];
 
-  const otherProjects = [
-    {
-      id: 4,
-      src: urlshortener,
-      title: "Shorten IT!",
-      href: "https://github.com/agogte/urlshortener",
-    },
-    {
-      id: 5,
-      src: newssummarizer,
-      title: "News Article Summarizer",
-      href: "https://agogte.github.io/newssummarizer/",
-    },
-    {
-      id: 6,
-      src: tictactoe,
-      title: "Tic Tac Toe",
-      href: "https://agogte.github.io/tic-tac-toe/",
-    },
-    {
-      id: 7,
-      src: dadjokes,
-      title: "Dad Joke Generator",
-      href: "https://agogte.github.io/dadjokes/",
-    },
-    {
-      id: 8,
-      src: password_generator,
-      title: "Password Generator",
-      href: "https://agogte.github.io/passgen_JS/",
-    },
-    {
-      id: 9,
-      src: snake,
-      title: "Snake Game",
-      href: "https://agogte.github.io/snake/",
-    },
-    {
-      id: 10,
-      src: hangman,
-      title: "Hangman Game",
-      href: "https://agogte.github.io/hangman/",
-    },
-    {
-      id: 11,
-      src: whowantstobeamillionair,
-      title: "Who Wants to Be a Millionaire?",
-      href: "https://agogte.github.io/whowantstobeamillionaire/",
-    },
-    {
-      id: 12,
-      src: candycrush,
-      title: "Candy Crush Clone",
-      href: "https://agogte.github.io/candycrushclone/",
-    },
-  ];
+const more = [
+  { src: newssummarizer, title: "News Summarizer", href: "https://agogte.github.io/newssummarizer/" },
+  { src: tictactoe, title: "Tic Tac Toe", href: "https://agogte.github.io/tic-tac-toe/" },
+  { src: dadjokes, title: "Dad Jokes", href: "https://agogte.github.io/dadjokes/" },
+  { src: password_generator, title: "Password Generator", href: "https://agogte.github.io/passgen_JS/" },
+  { src: snake, title: "Snake", href: "https://agogte.github.io/snake/" },
+  { src: hangman, title: "Hangman", href: "https://agogte.github.io/hangman/" },
+  { src: whowantstobeamillionair, title: "Millionaire", href: "https://agogte.github.io/whowantstobeamillionaire/" },
+  { src: candycrush, title: "Candy Crush", href: "https://agogte.github.io/candycrushclone/" },
+];
 
-  const renderProject = ({ id, src, title, href }) => (
-    <a
-      key={id}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-gray-900 rounded-lg p-3 shadow-md hover:scale-105 hover:shadow-white transition-transform duration-300 flex flex-col items-center"
-    >
-      <img
-        src={src}
-        alt={title}
-        className="w-16 h-16 md:w-20 md:h-20 object-contain mb-2"
-      />
-      <p className="text-sm md:text-base font-semibold text-center">{title}</p>
-    </a>
-  );
+const Portfolio = () => (
+  <Section name="portfolio">
+    <SectionHead
+      eyebrow="Selected work"
+      title="Also worth a look."
+      className="mb-8 md:mb-10"
+    />
 
-  return (
-    <div
-      name="portfolio"
-      className="w-full h-screen py-20 md:py-16 bg-gradient-to-b from-gray-800 to-black text-white"
-    >
-      <div className="max-w-screen-xl mx-auto p-4 flex flex-col justify-center w-full">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-4xl sm:text-5xl font-bold inline border-b-4 border-gray-500">
-            Portfolio
-          </p>
-          <p className="mt-2 text-gray-400">
-            Selected projects from my resume and side projects
-          </p>
-        </div>
+    <div className="border-t border-line">
+      {featured.map(({ src, title, blurb, stack, href }, i) => (
+        <Reveal key={title} delay={i * 60}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group grid gap-4 border-b border-line py-4 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
+          >
+            <img
+              src={src}
+              alt=""
+              className="h-9 w-9 shrink-0 object-contain grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+            />
 
-        {/* Top row: resume projects */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-4 mb-8">
-          {topProjects.map(renderProject)}
-        </div>
+            <div className="min-w-0">
+              <h3 className="text-[18px] font-extrabold tracking-tightest transition-colors group-hover:text-accent md:text-[20px]">
+                {title}
+              </h3>
+              <p className="mt-1 max-w-[68ch] text-[14px] leading-snug text-muted">
+                {blurb}
+              </p>
+            </div>
 
-        {/* Second row: other projects */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-4 mt-10">
-          {otherProjects.map(renderProject)}
-        </div>
-      </div>
+            <div className="flex shrink-0 items-center gap-4">
+              <ul className="hidden gap-3 lg:flex">
+                {stack.map((s) => (
+                  <li key={s} className="sg-eyebrow">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+              <span
+                aria-hidden="true"
+                className="text-[18px] text-muted transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-accent"
+              >
+                ↗
+              </span>
+            </div>
+          </a>
+        </Reveal>
+      ))}
     </div>
-  );
-};
+
+    <Reveal className="mt-8">
+      <p className="sg-eyebrow mb-3">Also built</p>
+      <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-4">
+        {more.map(({ src, title, href }) => (
+          <li key={title}>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2.5 border-b border-line py-2.5"
+            >
+              <img
+                src={src}
+                alt=""
+                className="h-5 w-5 shrink-0 object-contain grayscale opacity-70 transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+              />
+              <span className="truncate text-[13px] text-muted transition-colors group-hover:text-ink">
+                {title}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Reveal>
+  </Section>
+);
 
 export default Portfolio;

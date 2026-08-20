@@ -1,5 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@layer base {
+  /* Signal palette. Light is the default; .dark on <html> swaps the set.
+     The no-flash script in public/index.html stamps that class pre-paint. */
+  :root {
+    --sg-ground: 248 249 251;
+    --sg-raised: 255 255 255;
+    --sg-ink: 10 12 20;
+    --sg-muted: 92 100 116;
+    --sg-line: 222 226 234;
+    --sg-accent: 37 78 235;
+    --sg-signal: 5 150 105;
+    color-scheme: light;
+  }
+
+  .dark {
+    --sg-ground: 7 9 14;
+    --sg-raised: 15 18 26;
+    --sg-ink: 244 245 249;
+    --sg-muted: 136 145 163;
+    --sg-line: 27 31 42;
+    --sg-accent: 122 156 255;
+    --sg-signal: 52 211 153;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+  }
+
+  ::selection {
+    background: rgb(var(--sg-accent) / 0.28);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--sg-accent));
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Small mono utility used for eyebrows, captions and metadata. */
+  .sg-eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-code text-muted;
+  }
+
+  /* Display type: heavy, tight, set large. The page's whole personality. */
+  .sg-display {
+    @apply font-extrabold leading-[0.95] tracking-tightest;
+    text-wrap: balance;
+  }
+
+  /* Scroll-reveal: hidden until observed, then rises into place.
+     Keyframes are declared here rather than in tailwind.config.js — Tailwind
+     only emits config keyframes when a matching animate-* utility appears in
+     the markup, and this rule references the animation by name instead. */
+  @keyframes sg-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .sg-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .sg-reveal.is-in {
+    animation: sg-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* No JS, or motion turned down: show everything, unconditionally. */
+  @media (prefers-reduced-motion: reduce) {
+    .sg-reveal {
+      opacity: 1;
+      transform: none;
+      animation: none !important;
+    }
+  }
+}

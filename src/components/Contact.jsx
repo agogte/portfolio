@@ -1,51 +1,106 @@
 import React from "react";
+import { Section, SectionHead, Reveal } from "./Signal";
 
-const Contact = () => {
-  return (
-    <div
-      name="Contact"
-      className="w-full h-auto md:h-screen py-8 md:py-16 bg-gradient-to-b from-gray-800 to-black text-white"
-    >
-      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
-        <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
-            Contact
-          </p>
-          <p className="py-4">Submit the form below to get in touch with me</p>
-        </div>
-        <div className="flex justify-center items-center">
-          <form
-            action="https://getform.io/f/3b90c72f-6505-4aba-a1b2-612c29f08205"
-            method="post"
-            className="flex flex-col w-full md:w-1/2"
-          >
+const field =
+  "w-full border-0 border-b border-line bg-transparent px-0 py-3 text-[16px] text-ink placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none focus:ring-0";
+
+const channels = [
+  {
+    label: "Email",
+    value: "agogte.career@gmail.com",
+    href: "mailto:agogte.career@gmail.com",
+  },
+  {
+    label: "LinkedIn",
+    value: "in/advait-gogte",
+    href: "https://www.linkedin.com/in/advait-gogte/",
+  },
+  {
+    label: "GitHub",
+    value: "github.com/agogte",
+    href: "https://github.com/agogte",
+  },
+];
+
+const Contact = () => (
+  <Section name="Contact">
+    <SectionHead
+      eyebrow="Contact"
+      title="Let's talk."
+      note="Send a note and I'll get back to you."
+    />
+
+    <div className="grid gap-12 md:grid-cols-[1.1fr_.9fr] md:gap-16">
+      <Reveal>
+        <form
+          action="https://getform.io/f/3b90c72f-6505-4aba-a1b2-612c29f08205"
+          method="post"
+          className="space-y-7"
+        >
+          <div>
+            <label htmlFor="name" className="sg-eyebrow mb-1 block">
+              Name
+            </label>
+            <input id="name" type="text" name="name" required className={field} />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="sg-eyebrow mb-1 block">
+              Email
+            </label>
             <input
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-              className="p-2 border-2 bg-transparent rounded-md text-white focus:outline-none"
-            />
-            <input
+              id="email"
               type="email"
               name="email"
-              placeholder="Enter your email"
-              className="p-2 border-2 bg-transparent my-4 rounded-md text-white focus:outline-none"
+              required
+              className={field}
             />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="sg-eyebrow mb-1 block">
+              Message
+            </label>
             <textarea
+              id="message"
               name="message"
-              rows="10"
-              placeholder="Enter your message"
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            ></textarea>
-            <button className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300">
-              {" "}
-              Let's talk
-            </button>
-          </form>
-        </div>
-      </div>
+              rows="5"
+              required
+              className={`${field} resize-y`}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="border border-ink bg-ink px-7 py-3.5 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85"
+          >
+            Send message
+          </button>
+        </form>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <p className="sg-eyebrow mb-5">Or reach me directly</p>
+        <ul className="border-t border-line">
+          {channels.map(({ label, value, href }) => (
+            <li key={label} className="border-b border-line">
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-baseline justify-between gap-4 py-4"
+              >
+                <span className="sg-eyebrow">{label}</span>
+                <span className="break-all text-right text-[15px] transition-colors group-hover:text-accent">
+                  {value}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </div>
-  );
-};
+  </Section>
+);
 
 export default Contact;

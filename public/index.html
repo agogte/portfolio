@@ -2,16 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="👨🏻‍💻" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#FAFAF8" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Advait Gogte — Software Engineer building event-driven platforms, high-throughput APIs, and the observability that keeps them running."
     />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Advait Gogte Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Advait Gogte — Software Engineer</title>
+    <script>
+      // Stamp the theme before first paint so there is no flash of the wrong
+      // palette. Mirrors the logic in src/theme/ThemeContext.jsx.
+      (function () {
+        try {
+          var saved = localStorage.getItem("ag-theme");
+          var dark =
+            saved === "dark" ||
+            (saved !== "light" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) {
+            document.documentElement.classList.add("dark");
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute("content", "#08090B");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

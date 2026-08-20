@@ -1,54 +1,84 @@
 import React from "react";
-import HeroImage from "../assets/IMG_8031.jpeg";
-// import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
+import { Link } from "react-scroll";
+import FlagCanvas from "./FlagCanvas";
+import { Reveal } from "./Signal";
 
-const Home = () => {
-  return (
-    <div
-      name="Home"
-      className="h-screen w-full md:h-screen bg-gradient-to-b from-black via-black to-gray-800 py-10 md:py-24"
-    >
-      <div className="max-w-screen-lg mx-auto flex flex-col  md:flex-row items-center px-4 justify-center h-full">
-        <div className="flex flex-col justify-center h-full">
-          <h2 className="text-3xl sm:text-5xl font-bold text-white">
-            Software Engineer
-          </h2>
+const stats = [
+  { value: "+40%", label: "Throughput on a 10k+ txn platform" },
+  { value: "−35%", label: "P95 latency under production load" },
+  { value: "−55%", label: "Mean time to recovery" },
+  { value: "99.99%", label: "Uptime across blue/green releases" },
+];
 
-          <p className="text-gray-400 text-sm uppercase tracking-widest mt-5">
-            FullStack • Cloud Infrastructure • Event-Driven Architecture
+const Home = () => (
+  <section
+    name="Home"
+    id="Home"
+    className="flex flex-col justify-center pt-28 md:min-h-screen md:pt-20"
+  >
+    <div className="mx-auto w-full max-w-shell px-5 sm:px-8">
+      <div className="grid items-center gap-10 pb-14 md:grid-cols-[1.05fr_.95fr] md:gap-16 md:pb-16">
+        <Reveal>
+          <p className="sg-eyebrow text-accent">
+            Software Engineer · Washington, DC
           </p>
 
-          <p className="py-4 text-gray-300 text-lg">
-            Software Engineer with 3+ years of experience designing and
-            operating distributed systems at scale. Proven track record of
-            delivering measurable business impact through event-driven
-            architectures, high-throughput APIs, and AI-integrated backend
-            systems.
+          <h1 className="sg-display mt-6 text-[clamp(2.6rem,8vw,5.2rem)]">
+            Ship to <span className="text-accent">1%</span> before you ship to
+            everyone.
+          </h1>
+
+          <p className="mt-7 max-w-[46ch] text-[17px] leading-[1.65] text-muted">
+            I build event-driven platforms, high-throughput APIs, and the
+            release tooling that makes them safe to change — including the Go
+            feature-flag service running in this diagram.
           </p>
 
-          <p className="py-2 text-gray-300 text-lg">
-            Deep expertise in Java, TypeScript, and cloud-native infrastructure
-            across AWS and Azure. Known for strong engineering judgment,
-            cross-functional ownership, and shipping reliable systems that serve
-            millions of users.
-          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              to="portfolio"
+              smooth
+              duration={600}
+              offset={-64}
+              className="cursor-pointer border border-ink bg-ink px-7 py-3.5 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85"
+            >
+              See the work
+            </Link>
+            <a
+              href="https://drive.google.com/file/d/1H424_5anQ3FpUGUav1ksSkjZgN7b4kjN/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="border border-line px-7 py-3.5 text-[14px] font-semibold transition-colors hover:border-ink"
+            >
+              Résumé
+            </a>
+          </div>
+        </Reveal>
 
-          <p className="pt-2 text-gray-400 text-sm">
-            Recent work spans event-driven microservices, ETL pipelines, SQL
-            performance optimization, LLM-integrated tooling, and
-            production-grade CI/CD systems.
-          </p>
-        </div>
-        <div>
-          <img
-            src={HeroImage}
-            alt="displaypicture"
-            className="mx-auto md:w-2/3 w-2/3 rounded-2xl"
-          />
-        </div>
+        <Reveal delay={120}>
+          <FlagCanvas />
+        </Reveal>
       </div>
+
+      {/* Impact strip — hairline-divided, no cards */}
+      <Reveal
+        delay={200}
+        className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {stats.map(({ value, label }) => (
+          <div
+            key={label}
+            className="border-b border-line px-1 py-7 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 lg:last:border-r-0 sm:[&:nth-child(2)]:border-r-0 lg:[&:nth-child(2)]:border-r"
+          >
+            <p className="text-[2rem] font-extrabold tabular-nums leading-none tracking-tightest">
+              {value}
+            </p>
+            <p className="mt-3 text-[13px] leading-snug text-muted">{label}</p>
+          </div>
+        ))}
+      </Reveal>
     </div>
-  );
-};
+  </section>
+);
 
 export default Home;
