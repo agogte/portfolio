@@ -1,23 +1,13 @@
 name: Deploy to GitHub Pages
 
-# Builds the site and publishes it to the `gh-pages` branch, which is what
-# https://agogte.github.io/portfolio serves. Runs on every push to the default
-# branch, and can be triggered by hand from the Actions tab.
-#
-# This mirrors what ./deploy.sh does locally, so either route produces the
-# same result and no Pages settings need to change.
-
 on:
   push:
     branches: [main, master]
   workflow_dispatch:
 
-# Needed so the built-in GITHUB_TOKEN can push to gh-pages.
 permissions:
   contents: write
 
-# If two pushes land close together, let the newer one win rather than
-# racing to publish out of order.
 concurrency:
   group: deploy-gh-pages
   cancel-in-progress: true
@@ -40,8 +30,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        # CI=false keeps lint warnings from being promoted to errors, matching
-        # the local deploy script.
         run: CI=false npm run build
 
       - name: Verify build output
@@ -53,7 +41,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Stop Pages running the output through Jekyll.
           touch build/.nojekyll
 
           cd build
@@ -64,8 +51,6 @@ jobs:
           git add -A
           git commit -qm "Deploy ${GITHUB_SHA} from ${GITHUB_REF_NAME}"
 
-          # gh-pages holds build output only, so replacing it wholesale is
-          # intentional; there is no history worth preserving there.
           git push -f \
             "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
             gh-pages

@@ -1,14 +1,5 @@
 import React, { useEffect, useRef } from "react";
 
-/**
- * The hero's live diagram: users arrive, the evaluation engine resolves each
- * one against the rule chain, and they exit as ON or OFF. Roughly a third
- * land ON, matching the 30% rollout shown on the engine: the point being
- * that the split is deliberate, not random noise.
- *
- * Colours are read from the CSS custom properties so it follows the theme,
- * and the animation collapses to a static frame under prefers-reduced-motion.
- */
 const ROLLOUT = 0.3;
 
 const FlagCanvas = () => {
@@ -81,7 +72,6 @@ const FlagCanvas = () => {
       ctx.textBaseline = "middle";
       ctx.font = '500 10px "IBM Plex Mono", monospace';
 
-      // rails
       ctx.strokeStyle = p.line;
       ctx.beginPath();
       ctx.moveTo(g.userX + g.nodeW / 2, g.midY);
@@ -95,7 +85,6 @@ const FlagCanvas = () => {
         ctx.stroke();
       });
 
-      // user node
       ctx.strokeStyle = p.line;
       ctx.strokeRect(
         g.userX - g.nodeW / 2,
@@ -106,7 +95,6 @@ const FlagCanvas = () => {
       ctx.fillStyle = p.muted;
       ctx.fillText("USER", g.userX, g.midY);
 
-      // evaluation engine with its rule chain
       ctx.strokeStyle = p.accent;
       ctx.strokeRect(g.engineX, engineTop, g.engineW, g.engineH);
 
@@ -130,7 +118,6 @@ const FlagCanvas = () => {
       });
       ctx.font = '500 10px "IBM Plex Mono", monospace';
 
-      // outcome nodes: green means genuinely enabled, not decoration
       ctx.strokeStyle = p.signal;
       ctx.strokeRect(
         g.outX - g.nodeW / 2,
@@ -151,7 +138,6 @@ const FlagCanvas = () => {
       ctx.fillStyle = p.muted;
       ctx.fillText("OFF", g.outX, g.offY);
 
-      // users in flight
       users.forEach((u) => {
         ctx.fillStyle = u.stage === 0 ? p.accent : u.on ? p.signal : p.muted;
         ctx.fillRect(u.x - 3, u.y - 3, 6, 6);
@@ -168,7 +154,7 @@ const FlagCanvas = () => {
           x: g.userX + g.nodeW / 2,
           y: g.midY,
           stage: 0,
-          // Deterministic split so the rollout percentage reads true.
+
           on: seq % Math.round(1 / ROLLOUT) === 0,
         });
       }
@@ -200,7 +186,7 @@ const FlagCanvas = () => {
       resize();
       if (reduceMotion) {
         const g = geometry();
-        // Static frame: a few users resting on the inbound rail.
+
         users = [0, 1, 2].map((i) => ({
           x: g.userX + g.nodeW / 2 + 26 + i * 22,
           y: g.midY,
@@ -220,7 +206,6 @@ const FlagCanvas = () => {
     };
     window.addEventListener("resize", onResize);
 
-    // Repaint on theme change so the diagram picks up the new palette.
     const observer = new MutationObserver(() => draw());
     observer.observe(document.documentElement, {
       attributes: true,

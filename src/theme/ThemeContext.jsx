@@ -7,15 +7,6 @@ import React, {
   useState,
 } from "react";
 
-/**
- * Three-state theme: "light", "dark", or "system".
- *
- * "system" is the default and follows the OS preference live: if the visitor
- * flips their laptop to dark at sunset, the site follows without a reload.
- * An explicit choice is remembered in localStorage and wins until they pick
- * "system" again.
- */
-
 const STORAGE_KEY = "ag-theme";
 const ThemeContext = createContext(null);
 
@@ -28,7 +19,6 @@ const readStored = () => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     return saved === "light" || saved === "dark" ? saved : "system";
   } catch {
-    // Private mode / storage disabled, fall back to following the system.
     return "system";
   }
 };
@@ -37,7 +27,6 @@ export const ThemeProvider = ({ children }) => {
   const [choice, setChoice] = useState(readStored);
   const [systemDark, setSystemDark] = useState(prefersDark);
 
-  // Track the OS preference so "system" stays live.
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = (e) => setSystemDark(e.matches);
@@ -47,7 +36,6 @@ export const ThemeProvider = ({ children }) => {
 
   const isDark = choice === "system" ? systemDark : choice === "dark";
 
-  // Reflect onto <html> so Tailwind's `dark:` variants and the CSS vars apply.
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
     document
@@ -60,11 +48,9 @@ export const ThemeProvider = ({ children }) => {
       if (choice === "system") window.localStorage.removeItem(STORAGE_KEY);
       else window.localStorage.setItem(STORAGE_KEY, choice);
     } catch {
-      // Nothing to do; the in-memory choice still applies for this visit.
     }
   }, [choice]);
 
-  // Cycle light → dark → system, so the control works as a single button.
   const cycle = useCallback(() => {
     setChoice((c) => (c === "light" ? "dark" : c === "dark" ? "system" : "light"));
   }, []);

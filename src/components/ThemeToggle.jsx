@@ -7,10 +7,6 @@ const MODES = [
   { id: "dark", label: "Dark", glyph: "☾" },
 ];
 
-/**
- * Three-state mode switch as a single pill, the one rounded element on an
- * otherwise square-cornered page, so it reads unmistakably as a control.
- */
 const ThemeToggle = () => {
   const { choice, setChoice } = useTheme();
 

@@ -17,7 +17,6 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // The bar stays transparent over the hero and gains a rule once you leave it.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();

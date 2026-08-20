@@ -17,7 +17,6 @@ const showcase = {
   href: "https://github.com/agogte/feature-flag-service",
 };
 
-/** The lead build, given a section of its own rather than a row in a list. */
 const Showcase = () => (
   <Section name="showcase">
     <SectionHead eyebrow="Showcase" title="The one to read first." />

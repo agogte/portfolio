@@ -5,8 +5,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* Signal palette. Light is the default; .dark on <html> swaps the set.
-     The no-flash script in public/index.html stamps that class pre-paint. */
   :root {
     --sg-ground: 248 249 251;
     --sg-raised: 255 255 255;
@@ -15,6 +13,9 @@
     --sg-line: 222 226 234;
     --sg-accent: 37 78 235;
     --sg-signal: 5 150 105;
+    --sg-spot: 37 78 235;
+    --sg-spot-core: 0.13;
+    --sg-spot-edge: 0.05;
     color-scheme: light;
   }
 
@@ -26,6 +27,9 @@
     --sg-line: 27 31 42;
     --sg-accent: 122 156 255;
     --sg-signal: 52 211 153;
+    --sg-spot: 176 202 255;
+    --sg-spot-core: 0.28;
+    --sg-spot-edge: 0.11;
     color-scheme: dark;
   }
 
@@ -60,21 +64,42 @@
 }
 
 @layer components {
-  /* Small mono utility used for eyebrows, captions and metadata. */
   .sg-eyebrow {
     @apply font-mono text-[11px] uppercase tracking-code text-muted;
   }
 
-  /* Display type: heavy, tight, set large. The page's whole personality. */
   .sg-display {
     @apply font-extrabold leading-[0.95] tracking-tightest;
     text-wrap: balance;
   }
 
-  /* Scroll-reveal: hidden until observed, then rises into place.
-     Keyframes are declared here rather than in tailwind.config.js: Tailwind
-     only emits config keyframes when a matching animate-* utility appears in
-     the markup, and this rule references the animation by name instead. */
+  .sg-spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .sg-spotlight::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background: radial-gradient(
+        220px circle at var(--sx, 50%) var(--sy, 50%),
+        rgb(var(--sg-spot) / var(--sg-spot-core)),
+        rgb(var(--sg-spot) / var(--sg-spot-edge)) 40%,
+        transparent 72%
+      );
+    }
+
+    .sg-spotlight.is-hot::before {
+      opacity: 1;
+    }
+  }
+
   @keyframes sg-rise {
     from {
       opacity: 0;
@@ -94,7 +119,6 @@
     animation: sg-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* No JS, or motion turned down: show everything, unconditionally. */
   @media (prefers-reduced-motion: reduce) {
     .sg-reveal {
       opacity: 1;

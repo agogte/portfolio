@@ -4,11 +4,6 @@ import { Section, SectionHead, Reveal } from "./Signal";
 
 const roles = WorkExperienceDataset.slice().reverse();
 
-/**
- * Roles are shown one at a time. Stacking all three ran to twice the height of
- * a screen, and the current role carries six highlights on its own, a
- * selector keeps the whole history inside one view without cutting content.
- */
 const WorkExperience = () => {
   const [active, setActive] = useState(0);
   const role = roles[active];
@@ -22,7 +17,7 @@ const WorkExperience = () => {
       />
 
       <div className="grid gap-8 md:grid-cols-[260px_1fr] md:gap-14">
-        {/* Role selector */}
+
         <div
           role="tablist"
           aria-label="Roles"
@@ -56,7 +51,6 @@ const WorkExperience = () => {
           })}
         </div>
 
-        {/* Selected role */}
         <div
           role="tabpanel"
           id={`role-panel-${role.id}`}

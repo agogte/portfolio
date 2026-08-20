@@ -30,7 +30,6 @@ const links = [
   },
 ];
 
-/** Quiet vertical rail, pinned to the left edge on wide screens only. */
 const SocialLinks = () => (
   <nav
     aria-label="Elsewhere"

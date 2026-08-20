@@ -11,8 +11,7 @@ const facts = [
 
 const About = () => (
   <Section name="About">
-    {/* Heading sits inside the left column so the portrait rises to meet it,
-        keeping the whole section within one screen. */}
+
     <div className="grid gap-10 md:grid-cols-[1.35fr_.65fr] md:gap-14">
       <div>
         <SectionHead

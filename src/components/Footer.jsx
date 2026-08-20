@@ -1,8 +1,12 @@
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
+import { useSpotlight } from "./Signal";
 
-const Footer = () => (
-  <footer name="Footer" className="border-t border-line">
+const Footer = () => {
+  const spotlight = useSpotlight();
+
+  return (
+  <footer {...spotlight} name="Footer" className="sg-spotlight border-t border-line">
     <div className="mx-auto flex max-w-shell flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
       <div>
         <p className="text-[17px] font-extrabold tracking-tightest">
@@ -19,6 +23,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

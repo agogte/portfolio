@@ -1,11 +1,6 @@
 import React from "react";
 import { Section, SectionHead, Reveal } from "./Signal";
 
-/**
- * Ordered by how much the credential is worth in the 2026 backend/platform
- * hiring market, not by date. The ranking is the point of the section, so the
- * numbering carries real information rather than decorating the list.
- */
 const certifications = [
   {
     name: "Model Context Protocol: Advanced Topics",

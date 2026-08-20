@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-scroll";
 import FlagCanvas from "./FlagCanvas";
-import { Reveal } from "./Signal";
+import { Reveal, CountUp, useSpotlight } from "./Signal";
 
 const stats = [
   { value: "+40%", label: "Throughput on a 10k+ txn platform" },
@@ -10,11 +10,15 @@ const stats = [
   { value: "99.99%", label: "Uptime across blue/green releases" },
 ];
 
-const Home = () => (
+const Home = () => {
+  const spotlight = useSpotlight();
+
+  return (
   <section
+    {...spotlight}
     name="Home"
     id="Home"
-    className="flex flex-col justify-center pt-28 md:min-h-screen md:pt-20"
+    className="sg-spotlight flex flex-col justify-center pt-28 md:min-h-screen md:pt-20"
   >
     <div className="mx-auto w-full max-w-shell px-5 sm:px-8">
       <div className="grid items-center gap-10 pb-14 md:grid-cols-[1.05fr_.95fr] md:gap-16 md:pb-16">
@@ -60,7 +64,6 @@ const Home = () => (
         </Reveal>
       </div>
 
-      {/* Impact strip: hairline-divided, no cards */}
       <Reveal
         delay={200}
         className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4"
@@ -70,15 +73,17 @@ const Home = () => (
             key={label}
             className="border-b border-line px-1 py-7 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 lg:last:border-r-0 sm:[&:nth-child(2)]:border-r-0 lg:[&:nth-child(2)]:border-r"
           >
-            <p className="text-[2rem] font-extrabold tabular-nums leading-none tracking-tightest">
-              {value}
-            </p>
+            <CountUp
+              value={value}
+              className="block text-[2rem] font-extrabold tabular-nums leading-none tracking-tightest"
+            />
             <p className="mt-3 text-[13px] leading-snug text-muted">{label}</p>
           </div>
         ))}
       </Reveal>
     </div>
   </section>
-);
+  );
+};
 
 export default Home;
