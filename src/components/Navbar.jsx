@@ -1,85 +1,99 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
+import ThemeToggle from "./ThemeToggle";
+
+const links = [
+  { id: 1, to: "About", label: "About" },
+  { id: 2, to: "WorkExperience", label: "Experience" },
+  { id: 3, to: "showcase", label: "Showcase" },
+  { id: 4, to: "portfolio", label: "Work" },
+  { id: 5, to: "Experience", label: "Stack" },
+  { id: 6, to: "Contact", label: "Contact" },
+];
 
 const NavBar = () => {
-  const [nav, setNav] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    {
-      id: 1,
-      link: "Home",
-    },
-    {
-      id: 2,
-      link: "About",
-    },
-    {
-      id: 3,
-      link: "WorkExperience",
-    },
-    {
-      id: 4,
-      link: "portfolio",
-    },
-    {
-      id: 5,
-      link: "Experience",
-    },
-    {
-      id: 6,
-      link: "Contact",
-    },
-  ];
+  // The bar stays transparent over the hero and gains a rule once you leave it.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="flex justify-between items-center w-full h-auto px-4 md:py-4 text-white bg-black fixed">
-      <div>
-        <h1 className="text-3xl md:text-5xl font-signature ml-2 hover:scale-105 duration-500">
-          <a href="/">Advait Gogte</a>
-        </h1>
-      </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled ? "border-b border-line bg-ground/85 backdrop-blur" : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-shell items-center gap-6 px-5 py-4 sm:px-8">
+        <a
+          href="/"
+          className="text-[17px] font-extrabold tracking-tightest"
+          aria-label="Advait Gogte — home"
+        >
+          AG
+        </a>
 
-      <ul className="hidden md:flex">
-        {links.map(({ id, link }) => (
+        <nav className="hidden md:block">
+          <ul className="flex items-center gap-7">
+            {links.map(({ id, to, label }) => (
+              <li key={id}>
+                <Link
+                  to={to}
+                  smooth
+                  duration={600}
+                  offset={-64}
+                  spy
+                  activeClass="!text-ink"
+                  className="cursor-pointer text-[14px] text-muted transition-colors hover:text-ink"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="ml-auto flex items-center gap-3">
+          <ThemeToggle />
           <button
-            key={id}
-            className="px-6 cursor-pointer capitalize font-medium text-lg text-gray-500 hover:scale-105 duration-200 hover:bg-gray-600 hover:text-gray-300 focus:scale-105 focus:bg-gray-600 focus:text-gray-300 focus:ring focus:ring-gray-400 hover:rounded-full focus:rounded-full"
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="p-1.5 text-muted transition-colors hover:text-ink md:hidden"
           >
-            <Link to={link} smooth duration={500}>
-              {link}
-            </Link>
+            {open ? <FaTimes size={18} /> : <FaBars size={18} />}
           </button>
-        ))}
-      </ul>
-
-      <div
-        onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
-      >
-        {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+        </div>
       </div>
 
-      {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
-          {links.map(({ id, link }) => (
-            <li
-              key={id}
-              className="px-4 cursor-pointer capitalize py-6 text-4xl"
-            >
-              <Link
-                onClick={() => setNav(!nav)}
-                to={link}
-                smooth
-                duration={500}
-              >
-                {link}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {open && (
+        <nav className="border-t border-line bg-ground md:hidden">
+          <ul className="mx-auto max-w-shell px-5 py-2 sm:px-8">
+            {links.map(({ id, to, label }) => (
+              <li key={id} className="border-b border-line last:border-0">
+                <Link
+                  to={to}
+                  smooth
+                  duration={600}
+                  offset={-64}
+                  onClick={() => setOpen(false)}
+                  className="block cursor-pointer py-4 text-[15px] font-semibold"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
-    </div>
+    </header>
   );
 };
 

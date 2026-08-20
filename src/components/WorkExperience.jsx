@@ -1,63 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import WorkExperienceDataset from "../assets/data/WorkExperienceDataset";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
+import { Section, SectionHead, Reveal } from "./Signal";
 
+const roles = WorkExperienceDataset.slice().reverse();
+
+/**
+ * Roles are shown one at a time. Stacking all three ran to twice the height of
+ * a screen, and the current role carries six highlights on its own — a
+ * selector keeps the whole history inside one view without cutting content.
+ */
 const WorkExperience = () => {
-  return (
-    <div
-      name="WorkExperience"
-      className="w-full h-auto py-28 bg-gradient-to-b from-black to-gray-800 text-white"
-    >
-      <div className="max-w-screen-lg mx-auto px-4">
-        <div className="mb-16">
-          <p className="text-5xl font-bold sm:text-4xl">Work Experience</p>
-        </div>
-        <VerticalTimeline>
-          {WorkExperienceDataset.slice()
-            .reverse()
-            .map((element) => (
-              <VerticalTimelineElement
-                key={element.id}
-                contentStyle={{
-                  background: "transparent",
-                  boxShadow: "none",
-                }}
-                contentArrowStyle={{ display: "none" }}
-                iconStyle={{
-                  background: "#6b7280",
-                  boxShadow: "none",
-                }}
-              >
-                <div className="bg-gray-900/80 border border-gray-700 rounded-xl p-6 space-y-4 mt-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-xl font-semibold">{element.company}</p>
-                      <p className="text-sm text-gray-400">
-                        {element.title} · {element.location}
-                      </p>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2 sm:mt-0">
-                      {element.fromDate} – {element.toDate}
-                    </p>
-                  </div>
+  const [active, setActive] = useState(0);
+  const role = roles[active];
 
-                  <ul className="space-y-2 text-gray-300 text-sm">
-                    {element.highlights.map((point, idx) => (
-                      <li key={idx} className="flex gap-2">
-                        <span className="text-gray-500 mt-1 shrink-0">▸</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </VerticalTimelineElement>
-            ))}
-        </VerticalTimeline>
+  return (
+    <Section name="WorkExperience">
+      <SectionHead
+        eyebrow="Experience"
+        title="Where the systems ran."
+        className="mb-8 md:mb-10"
+      />
+
+      <div className="grid gap-8 md:grid-cols-[260px_1fr] md:gap-14">
+        {/* Role selector */}
+        <div
+          role="tablist"
+          aria-label="Roles"
+          className="flex gap-2 overflow-x-auto border-line pb-2 md:flex-col md:gap-0 md:overflow-visible md:border-l md:pb-0"
+        >
+          {roles.map((r, i) => {
+            const on = i === active;
+            return (
+              <button
+                key={r.id}
+                type="button"
+                role="tab"
+                id={`role-tab-${r.id}`}
+                aria-selected={on}
+                aria-controls={`role-panel-${r.id}`}
+                onClick={() => setActive(i)}
+                className={`shrink-0 whitespace-nowrap border-b-2 px-3 py-2.5 text-left transition-colors md:whitespace-normal md:border-b-0 md:border-l-2 md:-ml-[2px] md:px-4 md:py-3 ${
+                  on
+                    ? "border-accent text-ink"
+                    : "border-transparent text-muted hover:text-ink"
+                }`}
+              >
+                <span className="block text-[14px] font-semibold leading-snug">
+                  {r.company}
+                </span>
+                <span className="sg-eyebrow mt-1 block">
+                  {r.fromDate} — {r.toDate}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Selected role */}
+        <div
+          role="tabpanel"
+          id={`role-panel-${role.id}`}
+          aria-labelledby={`role-tab-${role.id}`}
+        >
+          <Reveal key={role.id}>
+            <h3 className="text-[22px] font-extrabold leading-tight tracking-tightest md:text-[28px]">
+              {role.title}
+            </h3>
+            <p className="mt-2 text-[14px] text-muted">
+              {role.company} · {role.location}
+            </p>
+
+            <ul className="mt-7 space-y-3.5">
+              {role.highlights.map((point, idx) => (
+                <li
+                  key={idx}
+                  className="grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-[1.6] text-muted"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-2.5 h-px w-5 shrink-0 bg-accent"
+                  />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
       </div>
-    </div>
+    </Section>
   );
 };
 
