@@ -6,7 +6,7 @@ const roles = WorkExperienceDataset.slice().reverse();
 
 /**
  * Roles are shown one at a time. Stacking all three ran to twice the height of
- * a screen, and the current role carries six highlights on its own — a
+ * a screen, and the current role carries six highlights on its own, a
  * selector keeps the whole history inside one view without cutting content.
  */
 const WorkExperience = () => {
@@ -49,7 +49,7 @@ const WorkExperience = () => {
                   {r.company}
                 </span>
                 <span className="sg-eyebrow mt-1 block">
-                  {r.fromDate} — {r.toDate}
+                  {r.fromDate} - {r.toDate}
                 </span>
               </button>
             );

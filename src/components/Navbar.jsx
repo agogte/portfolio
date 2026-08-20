@@ -35,7 +35,7 @@ const NavBar = () => {
         <a
           href="/"
           className="text-[17px] font-extrabold tracking-tightest"
-          aria-label="Advait Gogte — home"
+          aria-label="Advait Gogte home"
         >
           AG
         </a>

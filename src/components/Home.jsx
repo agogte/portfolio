@@ -30,7 +30,7 @@ const Home = () => (
 
           <p className="mt-7 max-w-[46ch] text-[17px] leading-[1.65] text-muted">
             I build event-driven platforms, high-throughput APIs, and the
-            release tooling that makes them safe to change — including the Go
+            release tooling that makes them safe to change, including the Go
             feature-flag service running in this diagram.
           </p>
 
@@ -60,7 +60,7 @@ const Home = () => (
         </Reveal>
       </div>
 
-      {/* Impact strip — hairline-divided, no cards */}
+      {/* Impact strip: hairline-divided, no cards */}
       <Reveal
         delay={200}
         className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4"

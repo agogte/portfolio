@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 /**
  * The hero's live diagram: users arrive, the evaluation engine resolves each
  * one against the rule chain, and they exit as ON or OFF. Roughly a third
- * land ON, matching the 30% rollout shown on the engine — the point being
+ * land ON, matching the 30% rollout shown on the engine: the point being
  * that the split is deliberate, not random noise.
  *
  * Colours are read from the CSS custom properties so it follows the theme,
@@ -130,7 +130,7 @@ const FlagCanvas = () => {
       });
       ctx.font = '500 10px "IBM Plex Mono", monospace';
 
-      // outcome nodes — green means genuinely enabled, not decoration
+      // outcome nodes: green means genuinely enabled, not decoration
       ctx.strokeStyle = p.signal;
       ctx.strokeRect(
         g.outX - g.nodeW / 2,

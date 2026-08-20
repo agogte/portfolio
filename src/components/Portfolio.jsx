@@ -18,7 +18,7 @@ import whowantstobeamillionair from "../assets/portfolio/whowantstobeamillionari
 const featured = [
   {
     src: urlshortener,
-    title: "URL Shortener — Observability Lab",
+    title: "URL Shortener: Observability Lab",
     blurb:
       "A shortener whose real subject is production observability: Prometheus metrics, Grafana dashboards and alert thresholds worth reasoning about.",
     stack: ["Node", "Prometheus", "Grafana"],
@@ -36,7 +36,7 @@ const featured = [
     src: smartapigateway,
     title: "Smart API Gateway",
     blurb:
-      "Gateway internals written from scratch — routing, throttling and request shaping.",
+      "Gateway internals written from scratch, covering routing, throttling and request shaping.",
     stack: ["Node"],
     href: "https://github.com/agogte/Smart-Api-Gateway",
   },
@@ -44,7 +44,7 @@ const featured = [
     src: rabbitmqSample,
     title: "RabbitMQ Sample",
     blurb:
-      "Messaging-queue scenarios and consumer patterns — groundwork behind pipelines that survive 5× spikes.",
+      "Messaging-queue scenarios and consumer patterns, the groundwork behind pipelines that survive 5× spikes.",
     stack: ["Node", "RabbitMQ"],
     href: "https://github.com/agogte/rabbitMq-sample",
   },

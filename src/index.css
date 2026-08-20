@@ -72,7 +72,7 @@
   }
 
   /* Scroll-reveal: hidden until observed, then rises into place.
-     Keyframes are declared here rather than in tailwind.config.js — Tailwind
+     Keyframes are declared here rather than in tailwind.config.js: Tailwind
      only emits config keyframes when a matching animate-* utility appears in
      the markup, and this rule references the animation by name instead. */
   @keyframes sg-rise {

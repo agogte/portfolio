@@ -10,7 +10,7 @@ import React, {
 /**
  * Three-state theme: "light", "dark", or "system".
  *
- * "system" is the default and follows the OS preference live — if the visitor
+ * "system" is the default and follows the OS preference live: if the visitor
  * flips their laptop to dark at sunset, the site follows without a reload.
  * An explicit choice is remembered in localStorage and wins until they pick
  * "system" again.
@@ -28,7 +28,7 @@ const readStored = () => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     return saved === "light" || saved === "dark" ? saved : "system";
   } catch {
-    // Private mode / storage disabled — fall back to following the system.
+    // Private mode / storage disabled, fall back to following the system.
     return "system";
   }
 };
@@ -60,7 +60,7 @@ export const ThemeProvider = ({ children }) => {
       if (choice === "system") window.localStorage.removeItem(STORAGE_KEY);
       else window.localStorage.setItem(STORAGE_KEY, choice);
     } catch {
-      // Nothing to do — the in-memory choice still applies for this visit.
+      // Nothing to do; the in-memory choice still applies for this visit.
     }
   }, [choice]);
 

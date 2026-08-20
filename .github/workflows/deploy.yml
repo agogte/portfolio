@@ -65,7 +65,7 @@ jobs:
           git commit -qm "Deploy ${GITHUB_SHA} from ${GITHUB_REF_NAME}"
 
           # gh-pages holds build output only, so replacing it wholesale is
-          # intentional — there is no history worth preserving there.
+          # intentional; there is no history worth preserving there.
           git push -f \
             "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
             gh-pages

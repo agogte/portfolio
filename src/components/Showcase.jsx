@@ -6,7 +6,7 @@ const showcase = {
   src: featureFlagService,
   title: "Feature Flag Service",
   blurb:
-    "A production-shaped feature flag platform written in Go. The evaluation engine resolves a flag for a given user through override lists, segment targeting, and sticky percentage rollouts — sticky meaning the same user always lands on the same side of a 30% rollout, which is what makes gradual releases measurable instead of noisy.",
+    "A production-shaped feature flag platform written in Go. The evaluation engine resolves a flag for a given user through override lists, segment targeting, and sticky percentage rollouts. Sticky means the same user always lands on the same side of a 30% rollout, which is what makes gradual releases measurable instead of noisy.",
   capabilities: [
     ["Evaluation engine", "Override lists, segment rules, sticky % rollouts"],
     ["Persistence", "SQLite-backed flag store, seeded on first run"],

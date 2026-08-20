@@ -36,7 +36,7 @@ echo "==> Building production bundle"
 CI=false npm run build
 
 if [ ! -f build/index.html ]; then
-  echo "Build did not produce build/index.html — aborting." >&2
+  echo "Build did not produce build/index.html, aborting." >&2
   exit 1
 fi
 

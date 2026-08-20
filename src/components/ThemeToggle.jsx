@@ -8,7 +8,7 @@ const MODES = [
 ];
 
 /**
- * Three-state mode switch as a single pill — the one rounded element on an
+ * Three-state mode switch as a single pill, the one rounded element on an
  * otherwise square-cornered page, so it reads unmistakably as a control.
  */
 const ThemeToggle = () => {

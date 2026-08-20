@@ -3,7 +3,7 @@ import HeroImage from "../assets/IMG_8031.jpeg";
 import { Section, SectionHead, Reveal } from "./Signal";
 
 const facts = [
-  { k: "Now", v: "Software Engineer II, IBEW — Washington, DC" },
+  { k: "Now", v: "Software Engineer II, IBEW · Washington, DC" },
   { k: "Core", v: "Java · TypeScript · Go · C#/.NET 8" },
   { k: "Cloud", v: "AWS · Azure · Kubernetes" },
   { k: "Since", v: "3+ years in production systems" },
@@ -23,7 +23,7 @@ const About = () => (
 
         <Reveal className="space-y-5 text-[16px] leading-[1.7] text-muted">
           <p>
-            I design and operate distributed systems at scale — event-driven
+            I design and operate distributed systems at scale: event-driven
             microservices, high-throughput APIs, ETL/ELT pipelines, and
             AI-integrated backend systems built to handle real production load.
           </p>
@@ -43,7 +43,7 @@ const About = () => (
             mission-critical services.
           </p>
           <p>
-            I care about engineering judgment, not just execution — hard
+            I care about engineering judgment, not just execution: hard
             distributed systems problems, AI tooling that earns its place in
             real workflows, and platforms that balance technical rigour with
             outcomes the business can actually feel.
