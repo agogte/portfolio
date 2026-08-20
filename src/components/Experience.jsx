@@ -66,7 +66,7 @@ const Experience = () => (
         <Reveal
           key={label}
           delay={i * 60}
-          className="grid gap-4 border-b border-line py-7 md:grid-cols-[.28fr_.72fr] md:gap-10"
+          className="grid gap-3 border-b border-line py-5 md:grid-cols-[.28fr_.72fr] md:gap-10"
         >
           <h3 className="sg-eyebrow pt-1">{label}</h3>
           <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
