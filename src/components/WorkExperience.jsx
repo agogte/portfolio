@@ -70,11 +70,11 @@ const WorkExperience = () => {
               {role.company} · {role.location}
             </p>
 
-            <ul className="mt-7 space-y-3.5">
+            <ul className="mt-6 space-y-3">
               {role.highlights.map((point, idx) => (
                 <li
                   key={idx}
-                  className="grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-[1.6] text-muted"
+                  className="grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-[1.55] text-muted"
                 >
                   <span
                     aria-hidden="true"
