@@ -8,7 +8,16 @@ const MODES = [
 ];
 
 const ThemeToggle = () => {
-  const { choice, setChoice } = useTheme();
+  const { choice, selectTheme } = useTheme();
+
+  // The wipe grows from the centre of whichever button was pressed.
+  const handleSelect = (id) => (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    selectTheme(id, {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  };
 
   return (
     <div
@@ -22,7 +31,7 @@ const ThemeToggle = () => {
           <button
             key={id}
             type="button"
-            onClick={() => setChoice(id)}
+            onClick={handleSelect(id)}
             aria-pressed={active}
             title={`${label} theme`}
             className={`rounded-full px-2.5 py-1 text-[12px] leading-none transition-colors duration-150 ${
