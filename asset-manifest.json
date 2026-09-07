@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.671a49aa.css",
+    "main.js": "/portfolio/static/js/main.e3c2ea94.js",
+    "static/media/IMG_8031.jpeg": "/portfolio/static/media/IMG_8031.71027d9b1869790da778.jpeg",
+    "static/media/candycrush.png": "/portfolio/static/media/candycrush.f845544823f37b3e72eb.png",
+    "static/media/whowantstobeamillionarie.png": "/portfolio/static/media/whowantstobeamillionarie.1fcd1bc42034f091c539.png",
+    "static/media/tictactoe.png": "/portfolio/static/media/tictactoe.5d0d9c65c215604e6959.png",
+    "static/media/password_generator.png": "/portfolio/static/media/password_generator.89bd9ebb131c53c0375c.png",
+    "static/media/snake.png": "/portfolio/static/media/snake.7786a6c1b18dc466bb74.png",
+    "static/media/smart-api.png": "/portfolio/static/media/smart-api.7531e8d070312facc530.png",
+    "static/media/dadjokes.png": "/portfolio/static/media/dadjokes.ef7af702901dfaa7aed5.png",
+    "static/media/queue.png": "/portfolio/static/media/queue.c737c11aa594ab57bb03.png",
+    "static/media/newssummaizer.png": "/portfolio/static/media/newssummaizer.a5874198db67a80d13c0.png",
+    "index.html": "/portfolio/index.html",
+    "static/media/feature-flag.svg": "/portfolio/static/media/feature-flag.1af436f8e8b42141e6f1978c1aae3d18.svg",
+    "main.671a49aa.css.map": "/portfolio/static/css/main.671a49aa.css.map",
+    "main.e3c2ea94.js.map": "/portfolio/static/js/main.e3c2ea94.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.671a49aa.css",
+    "static/js/main.e3c2ea94.js"
+  ]
+}
