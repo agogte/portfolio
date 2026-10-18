@@ -7,7 +7,6 @@
 @layer base {
   :root {
     --sg-ground: 248 249 251;
-    --sg-raised: 255 255 255;
     --sg-ink: 10 12 20;
     --sg-muted: 92 100 116;
     --sg-line: 222 226 234;
@@ -16,12 +15,12 @@
     --sg-spot: 37 78 235;
     --sg-spot-core: 0.13;
     --sg-spot-edge: 0.05;
+    --sg-ease: cubic-bezier(0.16, 1, 0.3, 1);
     color-scheme: light;
   }
 
   .dark {
     --sg-ground: 7 9 14;
-    --sg-raised: 15 18 26;
     --sg-ink: 244 245 249;
     --sg-muted: 136 145 163;
     --sg-line: 27 31 42;
@@ -86,7 +85,7 @@
       z-index: -1;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s var(--sg-ease);
       background: radial-gradient(
         220px circle at var(--sx, 50%) var(--sy, 50%),
         rgb(var(--sg-spot) / var(--sg-spot-core)),
@@ -116,7 +115,7 @@
     transform: translateY(18px);
   }
   .sg-reveal.is-in {
-    animation: sg-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: sg-rise 0.7s var(--sg-ease) both;
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -1,6 +1,16 @@
 import React from "react";
 import { Section, SectionHead, Reveal } from "./Signal";
 import featureFlagService from "../assets/portfolio/feature-flag.svg";
+import garminMcp from "../assets/portfolio/garmin-mcp.svg";
+
+const second = {
+  src: garminMcp,
+  title: "garmin-mcp",
+  blurb:
+    "A local-first MCP server that lets an AI assistant read Garmin activities, sleep and HRV, and build interval workouts that sync to your watch. The password is never stored, there is no backend or telemetry, and CI enforces the network boundary.",
+  stack: ["Python", "MCP", "uv", "pyright"],
+  href: "https://github.com/agogte/garmin_mcp",
+};
 
 const showcase = {
   src: featureFlagService,
@@ -32,7 +42,7 @@ const Showcase = () => (
           {showcase.title}
         </h3>
 
-        <p className="mt-5 max-w-[54ch] text-[16px] leading-[1.7] text-muted">
+        <p className="mt-4 max-w-[54ch] text-[15px] leading-[1.65] text-muted">
           {showcase.blurb}
         </p>
 
@@ -48,7 +58,7 @@ const Showcase = () => (
           href={showcase.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block border border-ink bg-ink px-7 py-3.5 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85"
+          className="mt-6 inline-block border border-ink bg-ink px-7 py-3 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85"
         >
           Read the source
         </a>
@@ -67,6 +77,42 @@ const Showcase = () => (
         </dl>
       </Reveal>
     </div>
+
+    <Reveal delay={160} className="mt-8 border-t border-line">
+      <a
+        href={second.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group grid gap-4 py-5 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
+      >
+        <img src={second.src} alt="" className="h-9 w-9 object-contain" />
+
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <h3 className="text-[20px] font-extrabold tracking-tightest transition-colors group-hover:text-accent">
+              {second.title}
+            </h3>
+            <ul className="flex gap-3">
+              {second.stack.map((s) => (
+                <li key={s} className="sg-eyebrow">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="mt-1.5 max-w-[78ch] text-[14px] leading-snug text-muted">
+            {second.blurb}
+          </p>
+        </div>
+
+        <span
+          aria-hidden="true"
+          className="hidden text-[18px] text-muted transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-accent md:block"
+        >
+          ↗
+        </span>
+      </a>
+    </Reveal>
   </Section>
 );
 

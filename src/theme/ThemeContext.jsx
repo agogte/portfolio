@@ -58,10 +58,6 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [choice]);
 
-  const cycle = useCallback(() => {
-    setChoice((c) => (c === "light" ? "dark" : c === "dark" ? "system" : "light"));
-  }, []);
-
   // Swaps the theme behind a circular wipe that grows from `origin`, the point
   // that was clicked. Falls back to an instant swap where the View Transitions
   // API is missing, motion is reduced, or no origin was supplied.
@@ -105,7 +101,7 @@ export const ThemeProvider = ({ children }) => {
             },
             {
               duration: 620,
-              easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+              easing: "cubic-bezier(0.16, 1, 0.3, 1)",
               pseudoElement: "::view-transition-new(root)",
             }
           );
@@ -116,8 +112,8 @@ export const ThemeProvider = ({ children }) => {
   );
 
   const value = useMemo(
-    () => ({ choice, setChoice, selectTheme, cycle, isDark }),
-    [choice, selectTheme, cycle, isDark]
+    () => ({ choice, selectTheme }),
+    [choice, selectTheme]
   );
 
   return (
