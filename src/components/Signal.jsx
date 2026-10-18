@@ -104,16 +104,6 @@ export const useSpotlight = () => {
   return { ref, onMouseMove, onMouseEnter, onMouseLeave };
 };
 
-export const Spotlight = ({ className = "", children }) => {
-  const spotlight = useSpotlight();
-
-  return (
-    <div {...spotlight} className={`sg-spotlight ${className}`}>
-      {children}
-    </div>
-  );
-};
-
 export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children }) => {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);

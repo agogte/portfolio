@@ -5,12 +5,10 @@ module.exports = {
     extend: {
       colors: {
         ground: "rgb(var(--sg-ground) / <alpha-value>)",
-        raised: "rgb(var(--sg-raised) / <alpha-value>)",
         ink: "rgb(var(--sg-ink) / <alpha-value>)",
         muted: "rgb(var(--sg-muted) / <alpha-value>)",
         line: "rgb(var(--sg-line) / <alpha-value>)",
         accent: "rgb(var(--sg-accent) / <alpha-value>)",
-        signal: "rgb(var(--sg-signal) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Archivo", "ui-sans-serif", "system-ui", "sans-serif"],
