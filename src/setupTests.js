@@ -1,7 +1,7 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 
 // jsdom implements none of these browser APIs. Plain functions are used rather
-// than jest.fn() because Create React App resets jest mocks between tests.
+// than mock functions so nothing depends on per-test mock resets.
 
 const makeMatchMedia = (matches = false) => (query) => ({
   matches,

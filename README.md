@@ -9,13 +9,13 @@
 [![Live site](https://img.shields.io/badge/live-agogte.github.io%2Fportfolio-2563eb)](https://agogte.github.io/portfolio)
 
 ![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react&logoColor=white)
-![Create React App](https://img.shields.io/badge/Create_React_App-5.0-09D3AC?logo=createreactapp&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.2-06B6D4?logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-06B6D4?logo=tailwindcss&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=nodedotjs&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-27-C21325?logo=jest&logoColor=white)
-![Testing Library](https://img.shields.io/badge/Testing_Library-13-E33332?logo=testinglibrary&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-5-6E9F18?logo=vitest&logoColor=white)
+![Testing Library](https://img.shields.io/badge/Testing_Library-16-E33332?logo=testinglibrary&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-hosting-222222?logo=githubpages&logoColor=white)
 
@@ -35,7 +35,7 @@ A single-page portfolio built with React and Tailwind CSS. Each section fills on
 
 ## Run it locally
 
-Requires Node.js 20.
+Requires Node.js 20.19 or newer.
 
 ```bash
 npm ci
@@ -50,7 +50,7 @@ The dev server runs at http://localhost:3000.
 npm test
 ```
 
-Tests use Jest and React Testing Library. They cover the page sections, the theme switcher, the stat counters and the post-deploy refresh check.
+Tests use Vitest and React Testing Library. They cover the page sections, the theme switcher, the stat counters and the post-deploy refresh check.
 
 ## Deploy
 
