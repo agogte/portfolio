@@ -23,6 +23,9 @@ module.exports = {
       maxWidth: {
         shell: "1200px",
       },
+      transitionTimingFunction: {
+        DEFAULT: "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
     },
   },
   plugins: [],
