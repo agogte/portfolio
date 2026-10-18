@@ -6,7 +6,7 @@ const facts = [
   { k: "Now", v: "Software Engineer II, IBEW · Washington, DC" },
   { k: "Core", v: "Java · TypeScript · Go · C#/.NET 8" },
   { k: "Cloud", v: "AWS · Azure · Kubernetes" },
-  { k: "Since", v: "3+ years in production systems" },
+  { k: "Since", v: "4+ years in production systems" },
 ];
 
 const About = () => (
@@ -16,20 +16,28 @@ const About = () => (
       <div>
         <SectionHead
           eyebrow="About"
-          title="Ownership, end to end."
+          title="AI-first backend engineer."
           className="mb-7 md:mb-9"
         />
 
         <Reveal className="space-y-5 text-[16px] leading-[1.7] text-muted">
           <p>
-            I design and operate distributed systems at scale: event-driven
-            microservices, high-throughput APIs, ETL/ELT pipelines, and
-            AI-integrated backend systems built to handle real production load.
+            I build backend systems with AI in the loop from design to
+            production. That means event-driven microservices, high-throughput
+            APIs and data pipelines, connected to LLMs through MCP servers and
+            automated tooling.
           </p>
           <p>
-            I&rsquo;ve owned systems end-to-end: architecture, implementation,
-            CI/CD, observability, and on-call readiness. That ownership turned
-            into a{" "}
+            At IBEW I brought LLM tooling into our engineering workflow for code
+            review, test generation and design validation. Post-release defects
+            fell{" "}
+            <span className="font-semibold text-ink">25%</span> and review cycles
+            got <span className="font-semibold text-ink">40% faster</span>. On my
+            own time I build MCP servers like garmin-mcp.
+          </p>
+          <p>
+            The backend work is what makes that AI usable in production. Owning a
+            10k+ transaction platform end to end delivered a{" "}
             <span className="font-semibold text-ink">
               40% throughput increase
             </span>
@@ -37,15 +45,7 @@ const About = () => (
             <span className="font-semibold text-ink">35% latency reduction</span>
             ,{" "}
             <span className="font-semibold text-ink">55% MTTR improvement</span>,
-            and sustained{" "}
-            <span className="font-semibold text-ink">99.99% uptime</span> across
-            mission-critical services.
-          </p>
-          <p>
-            I care about engineering judgment, not just execution: hard
-            distributed systems problems, AI tooling that earns its place in
-            real workflows, and platforms that balance technical rigour with
-            outcomes the business can actually feel.
+            and <span className="font-semibold text-ink">99.99% uptime</span>.
           </p>
         </Reveal>
       </div>
