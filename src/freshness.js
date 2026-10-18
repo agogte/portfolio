@@ -1,4 +1,4 @@
-const BUNDLE = /\/static\/js\/main\.([a-f0-9]+)\.js/;
+const BUNDLE = /\/static\/js\/main\.([\w-]+)\.js/;
 const RELOADED_FOR = "ag-reloaded-for";
 
 export const runningBundle = (doc = document) => {

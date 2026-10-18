@@ -29,6 +29,18 @@ describe("freshness", () => {
     expect(runningBundle()).toBe("abc123");
   });
 
+  test("reads Vite hashes, which can contain dashes and underscores", () => {
+    document.head.innerHTML = page("B7_X-azGz");
+    expect(runningBundle()).toBe("B7_X-azGz");
+  });
+
+  test("reloads when an old hex-hash page sees a new Vite build", async () => {
+    respondWith(page("B7_X-azGz"));
+
+    await expect(checkForUpdate({ running: "abc123", url: "/", reload })).resolves.toBe(true);
+    expect(reloads).toBe(1);
+  });
+
   test("returns null on the dev server where nothing is hashed", () => {
     document.head.innerHTML = '<script src="/static/js/bundle.js"></script>';
     expect(runningBundle()).toBeNull();
