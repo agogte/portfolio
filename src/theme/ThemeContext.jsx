@@ -58,9 +58,6 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [choice]);
 
-  // Swaps the theme behind a circular wipe that grows from `origin`, the point
-  // that was clicked. Falls back to an instant swap where the View Transitions
-  // API is missing, motion is reduced, or no origin was supplied.
   const selectTheme = useCallback(
     (next, origin) => {
       if (next === choice) return;

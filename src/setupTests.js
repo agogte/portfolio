@@ -1,8 +1,5 @@
 import "@testing-library/jest-dom/vitest";
 
-// jsdom implements none of these browser APIs. Plain functions are used rather
-// than mock functions so nothing depends on per-test mock resets.
-
 const makeMatchMedia = (matches = false) => (query) => ({
   matches,
   media: query,

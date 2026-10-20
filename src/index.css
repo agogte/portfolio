@@ -5,8 +5,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Tailwind 4 changed two defaults this design relies on: borders now take
-   currentColor, and buttons no longer show a pointer. Restore the v3 feel. */
+/* Restores the Tailwind 3 border color and button cursor defaults. */
 @layer base {
   *,
   ::after,

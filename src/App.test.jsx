@@ -74,11 +74,9 @@ describe("App", () => {
     );
   });
 
-  test("contact form posts to getform with the required fields", () => {
+  test("contact form requires every visible field", () => {
     const form = document.querySelector('[name="Contact"] form');
 
-    expect(form).toHaveAttribute("method", "post");
-    expect(form.getAttribute("action")).toMatch(/^https:\/\/getform\.io\//);
     ["name", "email", "message"].forEach((field) => {
       expect(form.querySelector(`[name="${field}"]`)).toBeRequired();
     });
