@@ -10,7 +10,6 @@ const MODES = [
 const ThemeToggle = () => {
   const { choice, selectTheme } = useTheme();
 
-  // The wipe grows from the centre of whichever button was pressed.
   const handleSelect = (id) => (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     selectTheme(id, {

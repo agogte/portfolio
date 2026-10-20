@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-contact",
+  "description": "Cloudflare Worker that sends portfolio contact form messages through Resend",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.3"
+  },
+  "private": true
+}

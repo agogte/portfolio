@@ -1,0 +1,19 @@
+name = "portfolio-contact"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+preview_urls = false
+
+[vars]
+FROM_EMAIL = "Portfolio Contact <onboarding@resend.dev>"
+# onboarding@resend.dev only delivers to the email on the Resend account that
+# owns RESEND_API_KEY, so this must match that account.
+TO_EMAIL = "agogte17@gmail.com"
+ALLOWED_ORIGINS = "https://agogte.github.io,http://localhost:3000"
+
+[[ratelimits]]
+name = "CONTACT_LIMIT"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+# RESEND_API_KEY is a secret, set with: npx wrangler secret put RESEND_API_KEY

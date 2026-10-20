@@ -20,8 +20,26 @@ export default defineConfig({
     },
   },
   test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/setupTests.js",
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: "site",
+          include: ["src/**/*.test.{js,jsx}"],
+          globals: true,
+          environment: "jsdom",
+          setupFiles: "./src/setupTests.js",
+          env: { VITE_CONTACT_ENDPOINT: "https://contact.test/" },
+        },
+      },
+      {
+        test: {
+          name: "worker",
+          include: ["worker/src/**/*.test.js"],
+          globals: true,
+          environment: "node",
+        },
+      },
+    ],
   },
 });

@@ -31,6 +31,7 @@ Un portfolio d'une seule page, construit avec React et Tailwind CSS. Chaque sect
 - **Sélecteur de thème** : le nouveau thème s'étend en cercle à partir du bouton cliqué, grâce à l'API View Transitions. Il bascule instantanément si cette API n'est pas disponible ou si les animations sont réduites.
 - **Compteurs animés** qui défilent quand ils apparaissent à l'écran.
 - **Projecteur** qui suit le curseur sur chaque section, sur les appareils équipés d'une souris.
+- **Formulaire de contact** qui m'envoie les messages via [Resend](https://resend.com), relayés par un petit Cloudflare Worker pour que la clé d'API n'atteigne jamais le navigateur.
 - **Toujours à jour après un déploiement.** GitHub Pages met les pages en cache pendant 10 minutes, donc le site vérifie au chargement s'il existe une version plus récente et se recharge si c'est le cas.
 
 ## Lancer en local
@@ -50,7 +51,7 @@ Le serveur de développement tourne sur http://localhost:3000.
 npm test
 ```
 
-Les tests utilisent Vitest et React Testing Library. Ils couvrent les sections de la page, le sélecteur de thème, les compteurs et la vérification de mise à jour après déploiement.
+Les tests utilisent Vitest et React Testing Library. Ils couvrent les sections de la page, le sélecteur de thème, les compteurs, le formulaire de contact, la vérification de mise à jour après déploiement et le Worker de contact.
 
 ## Déploiement
 
@@ -65,6 +66,24 @@ Pour déployer manuellement depuis n'importe quelle branche :
 ./deploy.sh
 ```
 
+## Formulaire de contact
+
+Le formulaire envoie les messages au Worker du dossier `worker/`. Il valide le message, limite chaque visiteur à cinq messages par minute, ignore les envois de robots repérés grâce à un champ caché, puis envoie l'e-mail via Resend avec l'adresse du visiteur en réponse.
+
+Pour le lancer en local, placez une clé Resend dans `worker/.dev.vars` sous la forme `RESEND_API_KEY=...`, puis :
+
+```bash
+cd worker && npm ci && npm run dev
+```
+
+Le site de développement utilise automatiquement le Worker local. Pour déployer le Worker :
+
+```bash
+cd worker && npx wrangler deploy
+```
+
+La clé est stockée chez Cloudflare avec `npx wrangler secret put RESEND_API_KEY` et n'est jamais commitée. Le site lit l'URL du Worker dans `VITE_CONTACT_ENDPOINT`, dans `.env.production`.
+
 ## Organisation du projet
 
 ```text
@@ -73,6 +92,7 @@ src/
   theme/        gestion des thèmes clair, sombre et système
   assets/       images et données du parcours professionnel
   freshness.js  recharge la page quand une nouvelle version est déployée
+worker/         Cloudflare Worker qui envoie les messages de contact via Resend
 .github/
   workflows/    tests sur les pull requests, déploiement au merge sur main
 ```
