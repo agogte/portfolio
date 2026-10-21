@@ -31,13 +31,16 @@ const NavBar = () => {
       }`}
     >
       <div className="mx-auto flex max-w-shell items-center gap-6 px-5 py-4 sm:px-8">
-        <a
-          href="/"
-          className="text-[17px] font-extrabold tracking-tightest"
-          aria-label="Advait Gogte home"
+        <Link
+          to="Home"
+          href="#Home"
+          smooth
+          duration={600}
+          className="cursor-pointer text-[17px] font-extrabold tracking-tightest"
+          aria-label="AG, back to top"
         >
           AG
-        </a>
+        </Link>
 
         <nav className="hidden md:block">
           <ul className="flex items-center gap-7">
@@ -45,6 +48,7 @@ const NavBar = () => {
               <li key={id}>
                 <Link
                   to={to}
+                  href={`#${to}`}
                   smooth
                   duration={600}
                   offset={-64}
@@ -80,6 +84,7 @@ const NavBar = () => {
               <li key={id} className="border-b border-line last:border-0">
                 <Link
                   to={to}
+                  href={`#${to}`}
                   smooth
                   duration={600}
                   offset={-64}

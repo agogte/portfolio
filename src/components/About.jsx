@@ -1,5 +1,6 @@
 import React from "react";
 import HeroImage from "../assets/IMG_8031.jpeg";
+import HeroImageSmall from "../assets/IMG_8031-450.jpeg";
 import { Section, SectionHead, Reveal } from "./Signal";
 
 const facts = [
@@ -53,7 +54,11 @@ const About = () => (
       <Reveal delay={120}>
         <img
           src={HeroImage}
+          srcSet={`${HeroImageSmall} 450w, ${HeroImage} 900w`}
+          sizes="(min-width: 768px) 352px, 100vw"
           alt="Advait Gogte"
+          width={900}
+          height={1125}
           className="aspect-[4/5] w-full object-cover"
         />
         <dl className="mt-6 border-t border-line">

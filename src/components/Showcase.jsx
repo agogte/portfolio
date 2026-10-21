@@ -34,7 +34,7 @@ const Showcase = () => (
     <div className="grid gap-10 md:grid-cols-[1.1fr_.9fr] md:gap-16">
       <Reveal>
         <div className="flex items-center gap-3">
-          <img src={showcase.src} alt="" className="h-9 w-9 object-contain" />
+          <img src={showcase.src} alt="" width={36} height={36} className="h-9 w-9 object-contain" />
           <span className="sg-eyebrow">Go · open source</span>
         </div>
 
@@ -85,7 +85,7 @@ const Showcase = () => (
         rel="noopener noreferrer"
         className="group grid gap-4 py-5 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
       >
-        <img src={second.src} alt="" className="h-9 w-9 object-contain" />
+        <img src={second.src} alt="" width={36} height={36} className="h-9 w-9 object-contain" />
 
         <div className="min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">

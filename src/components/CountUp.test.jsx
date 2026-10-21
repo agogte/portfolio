@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { CountUp } from "./Signal";
 
+const shown = (container) => container.querySelector('[aria-hidden="true"]');
+
 describe("CountUp", () => {
   const original = window.matchMedia;
 
@@ -11,9 +13,9 @@ describe("CountUp", () => {
   test("shows the final value straight away when motion is reduced", () => {
     window.matchMedia = window.__makeMatchMedia(true);
 
-    render(<CountUp value="99.99%" />);
+    const { container } = render(<CountUp value="99.99%" />);
 
-    expect(screen.getByLabelText("99.99%")).toHaveTextContent("99.99%");
+    expect(shown(container)).toHaveTextContent("99.99%");
   });
 
   test.each([
@@ -23,9 +25,9 @@ describe("CountUp", () => {
   ])("keeps the prefix and suffix of %s", (value, expected) => {
     window.matchMedia = window.__makeMatchMedia(true);
 
-    render(<CountUp value={value} />);
+    const { container } = render(<CountUp value={value} />);
 
-    expect(screen.getByLabelText(value)).toHaveTextContent(expected);
+    expect(shown(container)).toHaveTextContent(expected);
   });
 
   test("renders non-numeric values untouched", () => {
@@ -35,8 +37,15 @@ describe("CountUp", () => {
   });
 
   test("starts at zero until it scrolls into view", () => {
-    render(<CountUp value="+40%" />);
+    const { container } = render(<CountUp value="+40%" />);
 
-    expect(screen.getByLabelText("+40%")).toHaveTextContent("+0%");
+    expect(shown(container)).toHaveTextContent("+0%");
+  });
+
+  test("screen readers always get the final value, never the animation", () => {
+    const { container } = render(<CountUp value="+40%" />);
+
+    expect(screen.getByText("+40%")).toHaveClass("sr-only");
+    expect(container.querySelector("[aria-label]")).toBeNull();
   });
 });

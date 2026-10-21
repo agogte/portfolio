@@ -38,6 +38,19 @@ describe("App", () => {
     );
   });
 
+  test("every in-page link has a crawlable href to a real section", () => {
+    const links = [...document.querySelectorAll("a")].filter(
+      (a) => !a.getAttribute("href") || a.getAttribute("href").startsWith("#")
+    );
+
+    expect(links.length).toBeGreaterThan(0);
+    links.forEach((a) => {
+      const href = a.getAttribute("href");
+      expect(href).toMatch(/^#.+/);
+      expect(document.getElementById(href.slice(1))).toBeInTheDocument();
+    });
+  });
+
   test("showcase links to both featured repos", () => {
     const showcase = document.querySelector('[name="showcase"]');
     const hrefs = within(showcase)
