@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <meta
+      name="description"
+      content="Advait Gogte, Software Engineer building event-driven platforms, high-throughput APIs, and the observability that keeps them running."
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Advait Gogte | Software Engineer</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("ag-theme");
+          var dark =
+            saved === "dark" ||
+            (saved !== "light" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) {
+            document.documentElement.classList.add("dark");
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute("content", "#08090B");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/portfolio/static/js/main.D0yRxNXr.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/static/media/index.C60eEHui.css">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
