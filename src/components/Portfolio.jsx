@@ -81,6 +81,8 @@ const Portfolio = () => (
             <img
               src={src}
               alt=""
+              width={36}
+              height={36}
               className="h-9 w-9 shrink-0 object-contain grayscale transition-[filter] duration-300 group-hover:grayscale-0"
             />
 
@@ -127,6 +129,8 @@ const Portfolio = () => (
               <img
                 src={src}
                 alt=""
+                width={20}
+                height={20}
                 className="h-5 w-5 shrink-0 object-contain grayscale opacity-70 transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
               />
               <span className="truncate text-[13px] text-muted transition-colors group-hover:text-ink">

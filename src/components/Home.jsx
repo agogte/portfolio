@@ -41,6 +41,7 @@ const Home = () => {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               to="portfolio"
+              href="#portfolio"
               smooth
               duration={600}
               offset={-64}

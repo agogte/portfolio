@@ -72,7 +72,8 @@ export const CountUp = ({
   }
 
   return (
-    <span ref={ref} className={className} aria-label={value}>
+    <span ref={ref} className={className}>
+      <span className="sr-only">{value}</span>
       <span aria-hidden="true">
         {parsed.prefix}
         {current.toFixed(parsed.decimals)}
