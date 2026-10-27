@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { ArrowUpRight } from "./Icons";
 
 const ROLLOUT = 0.3;
 
@@ -26,10 +27,10 @@ const FlagCanvas = () => {
       const cs = getComputedStyle(document.documentElement);
       const rgb = (name) => `rgb(${cs.getPropertyValue(name).trim()})`;
       return {
-        muted: rgb("--sg-muted"),
-        line: rgb("--sg-line"),
-        accent: rgb("--sg-accent"),
-        signal: rgb("--sg-signal"),
+        muted: rgb("--c-ink-3"),
+        line: cs.getPropertyValue("--hairline-strong").trim(),
+        accent: rgb("--c-accent"),
+        signal: rgb("--c-signal"),
       };
     };
 
@@ -61,6 +62,14 @@ const FlagCanvas = () => {
       };
     };
 
+    // Half-pixel offset keeps 1px strokes crisp instead of smeared across two.
+    const box = (x, y, w, h, r = 8) => {
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x + 0.5, y + 0.5, w, h, r);
+      else ctx.rect(x + 0.5, y + 0.5, w, h);
+      ctx.stroke();
+    };
+
     const draw = () => {
       const p = readPalette();
       const g = geometry();
@@ -86,17 +95,12 @@ const FlagCanvas = () => {
       });
 
       ctx.strokeStyle = p.line;
-      ctx.strokeRect(
-        g.userX - g.nodeW / 2,
-        g.midY - g.nodeH / 2,
-        g.nodeW,
-        g.nodeH
-      );
+      box(g.userX - g.nodeW / 2, g.midY - g.nodeH / 2, g.nodeW, g.nodeH);
       ctx.fillStyle = p.muted;
       ctx.fillText("USER", g.userX, g.midY);
 
       ctx.strokeStyle = p.accent;
-      ctx.strokeRect(g.engineX, engineTop, g.engineW, g.engineH);
+      box(g.engineX, engineTop, g.engineW, g.engineH, 12);
 
       ctx.fillStyle = p.muted;
       ctx.fillText("EVALUATE", g.engineX + g.engineW / 2, engineTop - 14);
@@ -119,28 +123,20 @@ const FlagCanvas = () => {
       ctx.font = '500 10px "IBM Plex Mono", monospace';
 
       ctx.strokeStyle = p.signal;
-      ctx.strokeRect(
-        g.outX - g.nodeW / 2,
-        g.onY - g.nodeH / 2,
-        g.nodeW,
-        g.nodeH
-      );
+      box(g.outX - g.nodeW / 2, g.onY - g.nodeH / 2, g.nodeW, g.nodeH);
       ctx.fillStyle = p.signal;
       ctx.fillText("ON", g.outX, g.onY);
 
       ctx.strokeStyle = p.line;
-      ctx.strokeRect(
-        g.outX - g.nodeW / 2,
-        g.offY - g.nodeH / 2,
-        g.nodeW,
-        g.nodeH
-      );
+      box(g.outX - g.nodeW / 2, g.offY - g.nodeH / 2, g.nodeW, g.nodeH);
       ctx.fillStyle = p.muted;
       ctx.fillText("OFF", g.outX, g.offY);
 
       users.forEach((u) => {
         ctx.fillStyle = u.stage === 0 ? p.accent : u.on ? p.signal : p.muted;
-        ctx.fillRect(u.x - 3, u.y - 3, 6, 6);
+        ctx.beginPath();
+        ctx.arc(u.x, u.y, 3, 0, Math.PI * 2);
+        ctx.fill();
       });
     };
 
@@ -220,7 +216,7 @@ const FlagCanvas = () => {
   }, []);
 
   return (
-    <div className="relative border border-line">
+    <div className="card relative overflow-hidden">
       <canvas
         ref={canvasRef}
         className="block aspect-[4/3] w-full"
@@ -231,9 +227,10 @@ const FlagCanvas = () => {
         href="https://github.com/agogte/feature-flag-service"
         target="_blank"
         rel="noopener noreferrer"
-        className="sg-eyebrow absolute bottom-3 left-4 transition-colors hover:text-accent"
+        className="group footnote press absolute bottom-4 left-5 inline-flex items-center gap-1 text-ink-3 hover:text-ink"
       >
-        feature flag service · go →
+        feature-flag-service
+        <ArrowUpRight size={12} className="nudge" />
       </a>
     </div>
   );

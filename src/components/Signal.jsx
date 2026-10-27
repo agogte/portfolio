@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createSpring, prefersReducedMotion, spring } from "../motion";
 
-export const CountUp = ({
-  value,
-  duration = 1800,
-  delay = 250,
-  className = "",
-}) => {
+// Slow enough to read as counting, critically damped so it never passes the
+// real number.
+const COUNT = spring({ response: 0.9, damping: 1 });
+
+export const CountUp = ({ value, delay = 120, className = "" }) => {
   const ref = useRef(null);
   const [current, setCurrent] = useState(0);
 
@@ -26,46 +26,30 @@ export const CountUp = ({
     const el = ref.current;
     if (!el) return undefined;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (prefersReducedMotion()) {
       setCurrent(parsed.target);
       return undefined;
     }
 
-    let raf = 0;
+    const motion = createSpring(0, setCurrent, COUNT);
     let timer = 0;
-    let running = false;
-
-    const run = () => {
-      let startedAt = 0;
-      const tick = (now) => {
-        if (!startedAt) startedAt = now;
-        const progress = Math.min((now - startedAt) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setCurrent(parsed.target * eased);
-        if (progress < 1) raf = requestAnimationFrame(tick);
-        else running = false;
-      };
-      raf = requestAnimationFrame(tick);
-    };
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting || running) return;
-        running = true;
-        setCurrent(0);
-        clearTimeout(timer);
-        timer = setTimeout(run, delay);
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        timer = setTimeout(() => motion.to(parsed.target), delay);
       },
-      { threshold: 0.25, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0.25 }
     );
 
     io.observe(el);
     return () => {
       io.disconnect();
-      cancelAnimationFrame(raf);
+      motion.stop();
       clearTimeout(timer);
     };
-  }, [parsed, duration, delay]);
+  }, [parsed, delay]);
 
   if (!parsed) {
     return <span className={className}>{value}</span>;
@@ -81,28 +65,6 @@ export const CountUp = ({
       </span>
     </span>
   );
-};
-
-export const useSpotlight = () => {
-  const ref = useRef(null);
-
-  const onMouseMove = useCallback((event) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--sx", `${event.clientX - rect.left}px`);
-    el.style.setProperty("--sy", `${event.clientY - rect.top}px`);
-  }, []);
-
-  const onMouseEnter = useCallback(() => {
-    ref.current?.classList.add("is-hot");
-  }, []);
-
-  const onMouseLeave = useCallback(() => {
-    ref.current?.classList.remove("is-hot");
-  }, []);
-
-  return { ref, onMouseMove, onMouseEnter, onMouseLeave };
 };
 
 export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children }) => {
@@ -125,7 +87,7 @@ export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children })
           io.disconnect();
         }
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.05 }
+      { rootMargin: "0px 0px -8% 0px" }
     );
 
     io.observe(el);
@@ -135,46 +97,37 @@ export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children })
   return (
     <Tag
       ref={ref}
-      style={shown && delay ? { animationDelay: `${delay}ms` } : undefined}
-      className={`sg-reveal ${shown ? "is-in" : ""} ${className}`}
+      style={shown && delay ? { transitionDelay: `${delay}ms` } : undefined}
+      className={`reveal ${shown ? "is-in" : ""} ${className}`}
     >
       {children}
     </Tag>
   );
 };
 
-export const Section = ({ name, className = "", children }) => {
-  const spotlight = useSpotlight();
-
-  return (
-    <section
-      {...spotlight}
-      name={name}
-      id={name}
-      className={`sg-spotlight flex scroll-mt-16 flex-col justify-center border-t border-line md:min-h-screen ${className}`}
-    >
-      <div className="mx-auto w-full max-w-shell px-5 py-12 sm:px-8 md:py-14">
-        {children}
-      </div>
-    </section>
-  );
-};
+export const Section = ({ name, className = "", children }) => (
+  <section
+    name={name}
+    id={name}
+    className={`scroll-mt-16 ${className}`}
+  >
+    <div className="mx-auto w-full max-w-shell px-6 py-24 sm:px-10 md:py-40">
+      {children}
+    </div>
+  </section>
+);
 
 export const SectionHead = ({
   eyebrow,
   title,
   note,
-  className = "mb-10 md:mb-12",
+  className = "mb-12 md:mb-16",
 }) => (
   <Reveal className={className}>
-    <p className="sg-eyebrow text-accent">{eyebrow}</p>
-    <h2 className="sg-display mt-4 max-w-[16ch] text-4xl sm:text-5xl md:text-6xl">
-      {title}
-    </h2>
+    <p className="label">{eyebrow}</p>
+    <h2 className="title-1 mt-3 max-w-[20ch]">{title}</h2>
     {note && (
-      <p className="mt-5 max-w-[56ch] text-[16px] leading-relaxed text-muted">
-        {note}
-      </p>
+      <p className="mt-4 max-w-[52ch] text-ink-2">{note}</p>
     )}
   </Reveal>
 );

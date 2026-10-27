@@ -2,7 +2,6 @@ import { ThemeProvider } from "./theme/ThemeContext";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import SocialLinks from "./components/SocialLinks";
 import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
@@ -25,7 +24,6 @@ function App() {
         <Certifications />
         <Contact />
       </main>
-      <SocialLinks />
       <Footer />
     </ThemeProvider>
   );
