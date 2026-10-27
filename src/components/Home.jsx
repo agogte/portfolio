@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-scroll";
 import FlagCanvas from "./FlagCanvas";
-import { Reveal, CountUp, useSpotlight } from "./Signal";
+import { ArrowUpRight } from "./Icons";
+import { Reveal, CountUp } from "./Signal";
 
 const stats = [
   { value: "+40%", label: "Throughput on a 10k+ txn platform" },
@@ -10,42 +11,32 @@ const stats = [
   { value: "99.99%", label: "Uptime across blue/green releases" },
 ];
 
-const Home = () => {
-  const spotlight = useSpotlight();
-
-  return (
-  <section
-    {...spotlight}
-    name="Home"
-    id="Home"
-    className="sg-spotlight flex flex-col justify-center pt-28 md:min-h-screen md:pt-20"
-  >
-    <div className="mx-auto w-full max-w-shell px-5 sm:px-8">
-      <div className="grid items-center gap-10 pb-14 md:grid-cols-[1.05fr_.95fr] md:gap-16 md:pb-16">
+const Home = () => (
+  <section name="Home" id="Home" className="pt-32 md:pt-44">
+    <div className="mx-auto w-full max-w-shell px-6 sm:px-10">
+      <div className="grid items-center gap-16 md:grid-cols-[1.1fr_.9fr] md:gap-20">
         <Reveal>
-          <p className="sg-eyebrow text-accent">
-            Software Engineer · Washington, DC
-          </p>
+          <p className="label">Software Engineer · Washington, DC</p>
 
-          <h1 className="sg-display mt-6 text-[clamp(2.6rem,8vw,5.2rem)]">
+          <h1 className="display mt-6">
             Ship to <span className="text-accent">1%</span> before you ship to
             everyone.
           </h1>
 
-          <p className="mt-7 max-w-[46ch] text-[17px] leading-[1.65] text-muted">
+          <p className="mt-8 max-w-[44ch] text-[19px] leading-[30px] tracking-[-0.014em] text-ink-2">
             I build event-driven platforms, high-throughput APIs, and the
             release tooling that makes them safe to change, including the Go
             feature-flag service running in this diagram.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               to="portfolio"
               href="#portfolio"
               smooth
               duration={600}
               offset={-64}
-              className="cursor-pointer border border-ink bg-ink px-7 py-3.5 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85"
+              className="btn-primary"
             >
               See the work
             </Link>
@@ -53,38 +44,35 @@ const Home = () => {
               href="https://drive.google.com/file/d/1H424_5anQ3FpUGUav1ksSkjZgN7b4kjN/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
-              className="border border-line px-7 py-3.5 text-[14px] font-semibold transition-colors hover:border-ink"
+              className="link callout"
             >
               Résumé
+              <ArrowUpRight size={14} />
             </a>
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={80}>
           <FlagCanvas />
         </Reveal>
       </div>
 
       <Reveal
-        delay={200}
-        className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-4"
+        delay={160}
+        className="mt-24 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-line pt-10 lg:grid-cols-4"
       >
         {stats.map(({ value, label }) => (
-          <div
-            key={label}
-            className="border-b border-line px-1 py-7 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 lg:last:border-r-0 sm:[&:nth-child(2)]:border-r-0 lg:[&:nth-child(2)]:border-r"
-          >
+          <div key={label}>
             <CountUp
               value={value}
-              className="block text-[2rem] font-extrabold tabular-nums leading-none tracking-tightest"
+              className="block text-[28px] font-semibold leading-8 tracking-[-0.021em] tabular-nums"
             />
-            <p className="mt-3 text-[13px] leading-snug text-muted">{label}</p>
+            <p className="footnote mt-2 max-w-[22ch] text-ink-2">{label}</p>
           </div>
         ))}
       </Reveal>
     </div>
   </section>
-  );
-};
+);
 
 export default Home;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Section, SectionHead, Reveal } from "./Signal";
+import { ArrowUpRight } from "./Icons";
 
 import utilynx from "../assets/portfolio/NPM.png";
 import smartapigateway from "../assets/portfolio/smart-api.png";
@@ -61,62 +62,41 @@ const more = [
   { src: candycrush, title: "Candy Crush", href: "https://agogte.github.io/candycrushclone/" },
 ];
 
+const tile = { "--r": "10px", boxShadow: "var(--shadow-1)" };
+
 const Portfolio = () => (
   <Section name="portfolio">
-    <SectionHead
-      eyebrow="Selected work"
-      title="Also worth a look."
-      className="mb-8 md:mb-10"
-    />
+    <SectionHead eyebrow="Selected work" title="Also worth a look." />
 
-    <div className="border-t border-line">
+    <ul>
       {featured.map(({ src, title, blurb, stack, href }, i) => (
-        <Reveal key={title} delay={i * 60}>
+        <Reveal as="li" key={title} delay={i * 40}>
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group grid gap-4 border-b border-line py-4 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
+            className="row group grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 py-5 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-x-6"
           >
-            <img
-              src={src}
-              alt=""
-              width={36}
-              height={36}
-              className="h-9 w-9 shrink-0 object-contain grayscale transition-[filter] duration-300 group-hover:grayscale-0"
-            />
+            <span className="sq grid h-12 w-12 place-items-center bg-surface" style={tile}>
+              <img src={src} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+            </span>
 
             <div className="min-w-0">
-              <h3 className="text-[18px] font-extrabold tracking-tightest transition-colors group-hover:text-accent md:text-[20px]">
-                {title}
-              </h3>
-              <p className="mt-1 max-w-[68ch] text-[14px] leading-snug text-muted">
-                {blurb}
-              </p>
+              <h3 className="headline">{title}</h3>
+              <p className="callout mt-1 max-w-[64ch] text-ink-2">{blurb}</p>
             </div>
 
-            <div className="flex shrink-0 items-center gap-4">
-              <ul className="hidden gap-3 lg:flex">
-                {stack.map((s) => (
-                  <li key={s} className="sg-eyebrow">
-                    {s}
-                  </li>
-                ))}
-              </ul>
-              <span
-                aria-hidden="true"
-                className="text-[18px] text-muted transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-accent"
-              >
-                ↗
-              </span>
+            <div className="col-start-2 flex items-center gap-6 md:col-start-auto">
+              <p className="footnote text-ink-3">{stack.join(" · ")}</p>
+              <ArrowUpRight size={16} className="nudge hidden text-ink-3 md:block" />
             </div>
           </a>
         </Reveal>
       ))}
-    </div>
+    </ul>
 
-    <Reveal className="mt-8">
-      <p className="sg-eyebrow mb-3">Also built</p>
+    <Reveal className="mt-20">
+      <p className="label mb-4">Also built</p>
       <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-4">
         {more.map(({ src, title, href }) => (
           <li key={title}>
@@ -124,18 +104,10 @@ const Portfolio = () => (
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2.5 border-b border-line py-2.5"
+              className="row flex items-center gap-3 py-2.5"
             >
-              <img
-                src={src}
-                alt=""
-                width={20}
-                height={20}
-                className="h-5 w-5 shrink-0 object-contain grayscale opacity-70 transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-              />
-              <span className="truncate text-[13px] text-muted transition-colors group-hover:text-ink">
-                {title}
-              </span>
+              <img src={src} alt="" width={20} height={20} className="h-5 w-5 shrink-0 object-contain" />
+              <span className="callout truncate text-ink-2">{title}</span>
             </a>
           </li>
         ))}

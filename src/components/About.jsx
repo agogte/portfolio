@@ -5,23 +5,22 @@ import { Section, SectionHead, Reveal } from "./Signal";
 
 const facts = [
   { k: "Now", v: "Software Engineer II, IBEW · Washington, DC" },
-  { k: "Core", v: "Java · TypeScript · Go · C#/.NET 8" },
+  { k: "Core", v: "Java · TypeScript · Go · C#/.NET\u00a08" },
   { k: "Cloud", v: "AWS · Azure · Kubernetes" },
   { k: "Since", v: "4+ years in production systems" },
 ];
 
 const About = () => (
   <Section name="About">
-
-    <div className="grid gap-10 md:grid-cols-[1.35fr_.65fr] md:gap-14">
+    <div className="grid gap-16 md:grid-cols-[1.4fr_.6fr] md:gap-24">
       <div>
         <SectionHead
           eyebrow="About"
           title="AI-first backend engineer."
-          className="mb-7 md:mb-9"
+          className="mb-8 md:mb-10"
         />
 
-        <Reveal className="space-y-5 text-[16px] leading-[1.7] text-muted">
+        <Reveal className="max-w-[60ch] space-y-6 text-ink-2">
           <p>
             I build backend systems with AI in the loop from design to
             production. That means event-driven microservices, high-throughput
@@ -32,26 +31,26 @@ const About = () => (
             At IBEW I brought LLM tooling into our engineering workflow for code
             review, test generation and design validation. Post-release defects
             fell{" "}
-            <span className="font-semibold text-ink">25%</span> and review cycles
-            got <span className="font-semibold text-ink">40% faster</span>. On my
+            <span className="font-medium text-ink">25%</span> and review cycles
+            got <span className="font-medium text-ink">40% faster</span>. On my
             own time I build MCP servers like garmin-mcp.
           </p>
           <p>
             The backend work is what makes that AI usable in production. Owning a
             10k+ transaction platform end to end delivered a{" "}
-            <span className="font-semibold text-ink">
+            <span className="font-medium text-ink">
               40% throughput increase
             </span>
             ,{" "}
-            <span className="font-semibold text-ink">35% latency reduction</span>
+            <span className="font-medium text-ink">35% latency reduction</span>
             ,{" "}
-            <span className="font-semibold text-ink">55% MTTR improvement</span>,
-            and <span className="font-semibold text-ink">99.99% uptime</span>.
+            <span className="font-medium text-ink">55% MTTR improvement</span>,
+            and <span className="font-medium text-ink">99.99% uptime</span>.
           </p>
         </Reveal>
       </div>
 
-      <Reveal delay={120}>
+      <Reveal delay={80}>
         <img
           src={HeroImage}
           srcSet={`${HeroImageSmall} 450w, ${HeroImage} 900w`}
@@ -59,13 +58,14 @@ const About = () => (
           alt="Advait Gogte"
           width={900}
           height={1125}
-          className="aspect-[4/5] w-full object-cover"
+          className="sq aspect-[4/5] w-full object-cover"
+          style={{ "--r": "24px", boxShadow: "var(--shadow-2)" }}
         />
-        <dl className="mt-6 border-t border-line">
+        <dl className="mt-8 divide-y divide-line">
           {facts.map(({ k, v }) => (
-            <div key={k} className="flex gap-5 border-b border-line py-3">
-              <dt className="sg-eyebrow w-14 shrink-0 pt-0.5">{k}</dt>
-              <dd className="text-[14px] leading-snug">{v}</dd>
+            <div key={k} className="flex gap-6 py-3">
+              <dt className="label w-14 shrink-0 pt-0.5">{k}</dt>
+              <dd className="footnote">{v}</dd>
             </div>
           ))}
         </dl>

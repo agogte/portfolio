@@ -21,7 +21,7 @@ const paintTheme = (dark) => {
   document.documentElement.classList.toggle("dark", dark);
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content", dark ? "#08090B" : "#FAFAF8");
+    ?.setAttribute("content", dark ? "#0D0D0F" : "#F7F7F5");
 };
 
 const readStored = () => {
@@ -97,8 +97,8 @@ export const ThemeProvider = ({ children }) => {
               ],
             },
             {
-              duration: 620,
-              easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+              duration: 480,
+              easing: "cubic-bezier(0.32, 0.72, 0, 1)",
               pseudoElement: "::view-transition-new(root)",
             }
           );

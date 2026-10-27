@@ -1,5 +1,6 @@
 import React from "react";
 import { Section, SectionHead, Reveal } from "./Signal";
+import { ArrowUpRight } from "./Icons";
 
 const certifications = [
   {
@@ -43,67 +44,41 @@ const Certifications = () => (
       eyebrow="Certifications"
       title="Verified, and still relevant."
       note="Ordered by how much the credential actually counts for backend and platform work right now."
-      className="mb-8 md:mb-10"
     />
 
-    <ol className="m-0 list-none border-t border-line p-0">
+    <ol className="m-0 list-none p-0">
       {certifications.map(({ name, issuer, skills, href, credentialId }, i) => {
-        const rank = String(i + 1).padStart(2, "0");
-
-        const body = (
-          <>
-            <span className="font-mono text-[13px] font-medium tabular-nums text-accent">
-              {rank}
+        const Tag = href ? "a" : "div";
+        const link = href ? { href, target: "_blank", rel: "noopener noreferrer" } : {};
+        return (
+        <Reveal as="li" key={name} delay={i * 40}>
+          <Tag
+            {...link}
+            className="row group grid grid-cols-[32px_1fr_auto] items-center gap-x-4 py-4 md:grid-cols-[32px_1fr_auto_auto] md:gap-x-8"
+          >
+            <span className="footnote font-mono tabular-nums text-ink-3">
+              {String(i + 1).padStart(2, "0")}
             </span>
 
             <div className="min-w-0">
-              <h3 className="text-[16px] font-extrabold leading-snug tracking-tightest md:text-[18px]">
-                {name}
-              </h3>
-              <p className="mt-0.5 text-[13px] text-muted">{issuer}</p>
+              <h3 className="headline">{name}</h3>
+              <p className="footnote mt-0.5 text-ink-2">{issuer}</p>
             </div>
 
-            <ul className="hidden gap-3 lg:flex">
-              {skills.map((s) => (
-                <li key={s} className="sg-eyebrow whitespace-nowrap">
-                  {s}
-                </li>
-              ))}
-            </ul>
+            <p className="footnote hidden text-ink-3 lg:block">{skills.join(" · ")}</p>
 
             {href ? (
-              <span className="flex items-center gap-1.5 whitespace-nowrap text-[13px] text-muted transition-colors group-hover:text-accent">
+              <span className="footnote flex items-center gap-1 whitespace-nowrap text-ink-2 transition-colors group-hover:text-accent">
                 Verify
-                <span aria-hidden="true">↗</span>
+                <ArrowUpRight size={12} className="nudge" />
               </span>
             ) : (
-              <span className="sg-eyebrow whitespace-nowrap">
+              <span className="footnote whitespace-nowrap font-mono text-ink-3">
                 ID {credentialId}
               </span>
             )}
-          </>
-        );
-
-        const shared =
-          "grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 border-b border-line py-4 md:grid-cols-[auto_1fr_auto_auto] md:gap-x-8";
-
-        return (
-          <li key={name}>
-            <Reveal delay={i * 60}>
-              {href ? (
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group ${shared} transition-colors hover:bg-ink/[0.03]`}
-                >
-                  {body}
-                </a>
-              ) : (
-                <div className={shared}>{body}</div>
-              )}
-            </Reveal>
-          </li>
+          </Tag>
+        </Reveal>
         );
       })}
     </ol>

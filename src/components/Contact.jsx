@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Section, SectionHead, Reveal } from "./Signal";
+import { ArrowUpRight } from "./Icons";
 
 const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT;
 const EMAIL = "agogte.career@gmail.com";
-
-const field =
-  "w-full border-0 border-b border-line bg-transparent px-0 py-3 text-[16px] text-ink placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none focus:ring-0";
 
 const channels = [
   {
@@ -66,15 +64,15 @@ const ContactForm = () => {
 
   if (status === "sent") {
     return (
-      <div role="status" className="border-t border-line pt-7">
-        <p className="sg-eyebrow mb-3 text-accent">Message sent</p>
-        <p className="text-[18px] leading-relaxed">
+      <div role="status" className="fade-in">
+        <p className="title-3">Message sent</p>
+        <p className="mt-2 text-ink-2">
           Thanks for reaching out. I'll reply to the email you gave me.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-[14px] font-semibold underline underline-offset-4 transition-colors hover:text-accent"
+          className="link callout mt-6"
         >
           Send another
         </button>
@@ -85,16 +83,16 @@ const ContactForm = () => {
   const sending = status === "sending";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-7">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="sg-eyebrow mb-1 block">
+        <label htmlFor="name" className="footnote mb-2 block font-medium text-ink-2">
           Name
         </label>
-        <input id="name" type="text" name="name" required className={field} />
+        <input id="name" type="text" name="name" required className="field" />
       </div>
 
       <div>
-        <label htmlFor="email" className="sg-eyebrow mb-1 block">
+        <label htmlFor="email" className="footnote mb-2 block font-medium text-ink-2">
           Email
         </label>
         <input
@@ -102,12 +100,12 @@ const ContactForm = () => {
           type="email"
           name="email"
           required
-          className={field}
+          className="field"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="sg-eyebrow mb-1 block">
+        <label htmlFor="message" className="footnote mb-2 block font-medium text-ink-2">
           Message
         </label>
         <textarea
@@ -115,7 +113,7 @@ const ContactForm = () => {
           name="message"
           rows="5"
           required
-          className={`${field} resize-y`}
+          className="field resize-y"
         />
       </div>
 
@@ -125,16 +123,12 @@ const ContactForm = () => {
         <input id="website" type="text" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="flex flex-wrap items-center gap-5">
-        <button
-          type="submit"
-          disabled={sending}
-          className="border border-ink bg-ink px-7 py-3.5 text-[14px] font-semibold text-ground transition-opacity hover:opacity-85 disabled:cursor-wait disabled:opacity-60"
-        >
+      <div className="flex flex-wrap items-center gap-6 pt-2">
+        <button type="submit" disabled={sending} className="btn-primary">
           {sending ? "Sending..." : "Send message"}
         </button>
 
-        <p role="alert" className="text-[14px] text-muted">
+        <p role="alert" className="footnote text-ink-2">
           {status === "error" && (
             <>
               {error}{" "}
@@ -158,25 +152,26 @@ const Contact = () => (
       note="Send a note and I'll get back to you."
     />
 
-    <div className="grid gap-12 md:grid-cols-[1.1fr_.9fr] md:gap-16">
+    <div className="grid gap-16 md:grid-cols-[1.1fr_.9fr] md:gap-24">
       <Reveal>
         <ContactForm />
       </Reveal>
 
-      <Reveal delay={120}>
-        <p className="sg-eyebrow mb-5">Or reach me directly</p>
-        <ul className="border-t border-line">
+      <Reveal delay={80}>
+        <p className="label mb-4">Or reach me directly</p>
+        <ul>
           {channels.map(({ label, value, href }) => (
-            <li key={label} className="border-b border-line">
+            <li key={label}>
               <a
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-baseline justify-between gap-4 py-4"
+                className="row group flex items-center justify-between gap-4 py-4"
               >
-                <span className="sg-eyebrow">{label}</span>
-                <span className="break-all text-right text-[15px] transition-colors group-hover:text-accent">
+                <span className="callout text-ink-2">{label}</span>
+                <span className="callout flex items-center gap-1.5 break-all text-right font-medium">
                   {value}
+                  <ArrowUpRight size={12} className="nudge shrink-0 text-ink-3" />
                 </span>
               </a>
             </li>
