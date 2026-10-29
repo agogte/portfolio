@@ -30,6 +30,9 @@
     --c-ink-3: 110 110 116;
     --c-accent: 0 102 214;
     --c-signal: 22 150 90;
+    --c-spot: 0 102 214;
+    --spot-core: 0.13;
+    --spot-edge: 0.05;
 
     --hairline: rgb(22 22 24 / 0.08);
     --hairline-strong: rgb(22 22 24 / 0.14);
@@ -80,6 +83,9 @@
     --c-ink-3: 136 136 144;
     --c-accent: 82 158 255;
     --c-signal: 64 200 130;
+    --c-spot: 176 202 255;
+    --spot-core: 0.28;
+    --spot-edge: 0.11;
 
     --hairline: rgb(255 255 255 / 0.08);
     --hairline-strong: rgb(255 255 255 / 0.14);
@@ -289,6 +295,33 @@
     .group:hover .nudge {
       transform: translate(2px, -2px);
       color: rgb(var(--c-accent));
+    }
+  }
+
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s var(--spring-gentle);
+      background: radial-gradient(
+        220px circle at var(--sx, 50%) var(--sy, 50%),
+        rgb(var(--c-spot) / var(--spot-core)),
+        rgb(var(--c-spot) / var(--spot-edge)) 40%,
+        transparent 72%
+      );
+    }
+
+    .spotlight.is-hot::before {
+      opacity: 1;
     }
   }
 

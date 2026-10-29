@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { createSpring, prefersReducedMotion, spring } from "../motion";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { prefersReducedMotion } from "../motion";
 
-// Slow enough to read as counting, critically damped so it never passes the
-// real number.
-const COUNT = spring({ response: 0.9, damping: 1 });
-
-export const CountUp = ({ value, delay = 120, className = "" }) => {
+export const CountUp = ({
+  value,
+  duration = 1800,
+  delay = 250,
+  className = "",
+}) => {
   const ref = useRef(null);
   const [current, setCurrent] = useState(0);
 
@@ -31,25 +32,43 @@ export const CountUp = ({ value, delay = 120, className = "" }) => {
       return undefined;
     }
 
-    const motion = createSpring(0, setCurrent, COUNT);
+    let raf = 0;
     let timer = 0;
+    let running = false;
 
+    const run = () => {
+      let startedAt = 0;
+      const tick = (now) => {
+        if (!startedAt) startedAt = now;
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCurrent(parsed.target * eased);
+        if (progress < 1) raf = requestAnimationFrame(tick);
+        else running = false;
+      };
+      raf = requestAnimationFrame(tick);
+    };
+
+    // Same trigger point as Reveal, so the count starts once the stats are
+    // visible rather than finishing while they fade in. Replays on re-entry.
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        timer = setTimeout(() => motion.to(parsed.target), delay);
+        if (!entry.isIntersecting || running) return;
+        running = true;
+        setCurrent(0);
+        clearTimeout(timer);
+        timer = setTimeout(run, delay);
       },
-      { threshold: 0.25 }
+      { threshold: 0.25, rootMargin: "0px 0px -8% 0px" }
     );
 
     io.observe(el);
     return () => {
       io.disconnect();
-      motion.stop();
+      cancelAnimationFrame(raf);
       clearTimeout(timer);
     };
-  }, [parsed, delay]);
+  }, [parsed, duration, delay]);
 
   if (!parsed) {
     return <span className={className}>{value}</span>;
@@ -65,6 +84,28 @@ export const CountUp = ({ value, delay = 120, className = "" }) => {
       </span>
     </span>
   );
+};
+
+export const useSpotlight = () => {
+  const ref = useRef(null);
+
+  const onMouseMove = useCallback((event) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--sx", `${event.clientX - rect.left}px`);
+    el.style.setProperty("--sy", `${event.clientY - rect.top}px`);
+  }, []);
+
+  const onMouseEnter = useCallback(() => {
+    ref.current?.classList.add("is-hot");
+  }, []);
+
+  const onMouseLeave = useCallback(() => {
+    ref.current?.classList.remove("is-hot");
+  }, []);
+
+  return { ref, onMouseMove, onMouseEnter, onMouseLeave };
 };
 
 export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children }) => {
@@ -105,17 +146,22 @@ export const Reveal = ({ as: Tag = "div", delay = 0, className = "", children })
   );
 };
 
-export const Section = ({ name, className = "", children }) => (
-  <section
-    name={name}
-    id={name}
-    className={`scroll-mt-16 ${className}`}
-  >
-    <div className="mx-auto w-full max-w-shell px-6 py-24 sm:px-10 md:py-40">
-      {children}
-    </div>
-  </section>
-);
+export const Section = ({ name, className = "", children }) => {
+  const spotlight = useSpotlight();
+
+  return (
+    <section
+      {...spotlight}
+      name={name}
+      id={name}
+      className={`spotlight scroll-mt-16 ${className}`}
+    >
+      <div className="mx-auto w-full max-w-shell px-6 py-24 sm:px-10 md:py-40">
+        {children}
+      </div>
+    </section>
+  );
+};
 
 export const SectionHead = ({
   eyebrow,
